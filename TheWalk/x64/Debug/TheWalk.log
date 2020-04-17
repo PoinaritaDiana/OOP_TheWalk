@@ -1,3 +1,6 @@
-﻿  Harta.cpp
+﻿  Game.cpp
+  Harta.cpp
 C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\Harta.cpp(13,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  RobotWalle.cpp
+  Generating Code...
   TheWalk.vcxproj -> C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.exe

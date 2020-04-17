@@ -47,14 +47,20 @@ void Game::runGame() {
 	newPoz = rb->chooseNewPosition(*H);				//Pozitia pe care trebuie sa se mute robotul
 	poz = rb->getPosition();						//Pozitia pe care era inainte
 
-	
-	cout << "Robotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
-	H->moveRobot(rb, newPoz.first, newPoz.second);
-	if (newPoz == H->getLocatie()) {
-		cout << "Felicitari!Ai ajuns la destinatie" << endl;
+	//Inseamna ca n a gasit o alta pozitie pe care sa se duca
+	if (newPoz == make_pair(-1, -1)) {
+		cout << "Oh nu, Robotul s-a blocat" << endl;
+		cout << "Opsss";
 		this->finish = 1;
+	}
+	else {
+		cout << "Robotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
+		H->moveRobot(rb, newPoz.first, newPoz.second);
+		if (newPoz == H->getLocatie()) {
+			cout << "Felicitari!Ai ajuns la destinatie" << endl;
+			this->finish = 1;
 		}
-	
+	}
 }
 
 int Game::getFinish() {

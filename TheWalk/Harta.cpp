@@ -66,7 +66,7 @@ void Harta::moveRobot(Robot* const robot, const int linie, const int coloana) {
 	//Trebuie sa pun pe noua pozitie R si sa sterg R ul vechi
 	matrix[linie][coloana] = 'R';
 	pair<int, int> p = robot->getPosition();
-	matrix[p.first][p.second] = '_';
+	matrix[p.first][p.second] = '/';
 	robot->setPosition(make_pair(linie, coloana));
 }
 
