@@ -1,0 +1,38 @@
+﻿  Game.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(32): error C2259: 'RobotTerminator': cannot instantiate abstract class
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\RobotTerminator.h(3): message : see declaration of 'RobotTerminator'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(32): message : due to following members:
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(32): message : 'std::pair<int,int> Robot::chooseNewPosition(const Harta &) const': is abstract
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Robot.h(28): message : see declaration of 'Robot::chooseNewPosition'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(32,26): error C2259: 'RobotTerminator': cannot instantiate abstract class
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\RobotTerminator.h(3): message : see declaration of 'RobotTerminator'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(32,26): message : due to following members:
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(32,26): message : 'std::pair<int,int> Robot::chooseNewPosition(const Harta &) const': is abstract
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Robot.h(28): message : see declaration of 'Robot::chooseNewPosition'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(34): error C2259: 'RobotQrio': cannot instantiate abstract class
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\RobotQrio.h(3): message : see declaration of 'RobotQrio'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(34): message : due to following members:
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(34): message : 'std::pair<int,int> Robot::chooseNewPosition(const Harta &) const': is abstract
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Robot.h(28): message : see declaration of 'Robot::chooseNewPosition'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(34,20): error C2259: 'RobotQrio': cannot instantiate abstract class
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\RobotQrio.h(3): message : see declaration of 'RobotQrio'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(34,20): message : due to following members:
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(34,20): message : 'std::pair<int,int> Robot::chooseNewPosition(const Harta &) const': is abstract
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Robot.h(28): message : see declaration of 'Robot::chooseNewPosition'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(36): error C2259: 'RobotWalle': cannot instantiate abstract class
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\RobotWalle.h(3): message : see declaration of 'RobotWalle'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(36): message : due to following members:
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(36): message : 'std::pair<int,int> Robot::chooseNewPosition(const Harta &) const': is abstract
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Robot.h(28): message : see declaration of 'Robot::chooseNewPosition'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(36,21): error C2259: 'RobotWalle': cannot instantiate abstract class
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\RobotWalle.h(3): message : see declaration of 'RobotWalle'
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(36,21): message : due to following members:
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Game.cpp(36,21): message : 'std::pair<int,int> Robot::chooseNewPosition(const Harta &) const': is abstract
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\Robot.h(28): message : see declaration of 'Robot::chooseNewPosition'
+  Robot.cpp
+  RobotQrio.cpp
+  RobotTerminator.cpp
+  RobotWalle.cpp
+  TheWalk.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\TheWalk.cpp(43,6): warning C4101: 'cont': unreferenced local variable
+  Generating Code...
