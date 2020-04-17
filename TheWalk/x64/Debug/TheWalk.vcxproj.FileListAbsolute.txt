@@ -1,2 +1,4 @@
 C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\x64\Debug\TheWalk.exe
 C:\Users\Diana\Desktop\TheWalkPoo\TheWalk\x64\Debug\TheWalk.pdb
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.exe
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.pdb

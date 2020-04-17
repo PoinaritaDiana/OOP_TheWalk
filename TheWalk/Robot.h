@@ -25,8 +25,9 @@ public:
 
 	pair<int,int> getPosition() const;				//Getter pentru pozitia curenta a robotului
 
+
 	virtual pair<int, int> chooseNewPosition(const Harta& h) const = 0;			//Functie care returneaza noua pozitie pe care se va afla robotul
 
-	friend class Harta;
+	friend Harta;
 };
 

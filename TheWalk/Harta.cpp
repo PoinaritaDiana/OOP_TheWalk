@@ -12,20 +12,9 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 
 	srand(time(NULL));
 
-	int ok = 0;
-	//Generare pozitie FINISH (marcat cu F pe harta)
-	do {
-		int poz_final_x = rand() % nrRows;
-		int poz_final_y = rand() % nrColumns;
-		if (matrix[poz_final_x][poz_final_y] == '_') {
-			matrix[poz_final_x][poz_final_y] = 'F';
-			ok = 1;
-		}
-	} while (ok == 0);
-
 
 	//Generare pozitii pentru capcane (marcate cu X pe harta)
-	int nr_max_capcane = nrRows;
+	int nr_max_capcane = 2*nrRows;
 	while (nr_max_capcane) {
 		int poz_x = rand() % (nrRows - 1) + 1;
 		int poz_y = rand() % (nrColumns - 1) + 1;
@@ -34,6 +23,25 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 			matrix[poz_x][poz_y] = 'X';
 		}
 	}
+
+	int ok = 0;
+	//Generare pozitie FINISH (marcat cu F pe harta)
+	do {
+		int poz_final_x = rand() % nrRows;
+		int poz_final_y = rand() % nrColumns;
+		if (matrix[poz_final_x][poz_final_y] == '_') {
+			matrix[poz_final_x][poz_final_y] = 'F';
+			this->locatie = make_pair(poz_final_x, poz_final_y);
+			ok = 1;
+		}
+	} while (ok == 0);
+
+}
+int Harta::getRows() const {
+	return this->nrRows;
+}
+int Harta::getColumns() const {
+	return this->nrColumns;
 }
 
 Harta::~Harta() {
@@ -46,23 +54,20 @@ Harta::~Harta() {
 
 }
 
-pair <int, int> Harta::getLocatie() {
-	pair <int, int> l;
-	int ok = 1;
-	int i = 0;
-	while (i < nrRows && ok == 1)
-	{
-		int j = 0;
-		while (j < nrColumns && ok == 1) {
-			if (matrix[i][j] == 'F') {
-				l = make_pair(i, j);
-				ok = 0;
-			}
-			j++;
-		}
-		i++;
-	}
-	return l;
+pair <int, int> Harta::getLocatie() const {
+	return this->locatie;
+}
+
+char Harta::getMatrix(int i, int j) const{
+	return this->matrix[i][j];
+}
+
+void Harta::moveRobot(Robot* const robot, const int linie, const int coloana) {
+	//Trebuie sa pun pe noua pozitie R si sa sterg R ul vechi
+	matrix[linie][coloana] = 'R';
+	pair<int, int> p = robot->getPosition();
+	matrix[p.first][p.second] = '_';
+	robot->setPosition(make_pair(linie, coloana));
 }
 
 

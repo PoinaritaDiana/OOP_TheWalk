@@ -12,15 +12,16 @@ class Game
 {
 	Harta* H;					//Harta pe care se joaca 
 	Robot* r;					//Robotul ales de utilizator pentru acest joc
+	int idRobot;
 	int runda = 0;				//Numarul rundei la care s-a ajuns
-	pair <int, int> locatie;	//Retin unde se afla locatia unde trebuie sa ajunga robotul
+	int finish = 0;
 public:
 	Game();
 	~Game();
 	void print();
 	void runGame();
 	void setRobot(int);
+	int getFinish();
 
-	//bool finish();
 };
 	

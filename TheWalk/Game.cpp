@@ -17,43 +17,50 @@ Game::Game() {
 	}
 	cout << endl;
 	H = new Harta(x, y);
-	this-> locatie = H->getLocatie();
 }
 
 Game::~Game() {
 	delete H;
 	delete r;
-	runda = 0;			
-	locatie = make_pair(-1, -1);
+	runda = 0;	
+	finish = 0;
 }
 
 void Game::setRobot(int id) {
+	idRobot = id;
+	/*
 	if (id == 1)
 		r = new RobotTerminator(1);
 	if(id==2)
 		r = new RobotQrio(2);
+		*/
 	if(id==3)
 		r = new RobotWalle(3);
 }
+
 
 void Game::runGame() {
 	pair<int, int> poz, newPoz;
 	runda++;
 	cout << "Runda " << runda << " :" << endl;
 	Robot* rb = this->r;
-	newPoz = rb->chooseNewPosition(*H);
-	poz = rb->getPosition();
-	H->moveRobot(newPoz.first, newPoz.second);
+	newPoz = rb->chooseNewPosition(*H);				//Pozitia pe care trebuie sa se mute robotul
+	poz = rb->getPosition();						//Pozitia pe care era inainte
 
+	
+	cout << "Robotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
+	H->moveRobot(rb, newPoz.first, newPoz.second);
+	if (newPoz == H->getLocatie()) {
+		cout << "Felicitari!Ai ajuns la destinatie" << endl;
+		this->finish = 1;
+		}
 	
 }
 
+int Game::getFinish() {
+	return this->finish;
+}
 void Game::print() {
 	cout << *H;
 }
 
-/*
-bool Game::finish() {
-	return 0;
-}
-*/

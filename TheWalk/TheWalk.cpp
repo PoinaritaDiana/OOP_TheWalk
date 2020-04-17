@@ -1,6 +1,10 @@
 #include <iostream>
 #include "Game.h"
 #include "Harta.h"
+#include "Robot.h"
+#include "RobotTerminator.h"
+#include "RobotQrio.h"
+#include "RobotWalle.h"
 using namespace std;
 
 int welcome_user() {
@@ -58,21 +62,24 @@ int main() {
 	system("pause");
 	cout << endl;
 
-	/*
+	
 	if (op == 1) {
-		bool f = 1;
+		bool f = 0;
 		int cont = 1;
 		do {
 			G.runGame();
 			G.print();
-			f = G.finish();
-			cout << "\nDoriti sa continuati jocul?\nIntroduceti 1 pentru DA sau 0 pentru NU:";
-			cin >> cont;
-			cout << endl;
-		} while (cont==1 && f==1);
+			f = G.getFinish();
+			if (f == 0) {
+				cout << "\nDoriti sa continuati jocul?\nIntroduceti 1 pentru DA sau 0 pentru NU:";
+				cin >> cont;
+				cout << endl;
+			}
+		} while (cont==1 && f==0);
 		if (cont == 0)
 			cout << endl << "Game Over\nYou didn't reach your destination. Good luck next time!" << endl;
 	}
+	/*
 	else {
 		while (G.finish()==1) {
 			G.runGame();
