@@ -26,7 +26,6 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 							p = { l,c };
 						}
 				}
-
 			}
 		}
 	return p;

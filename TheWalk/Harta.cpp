@@ -12,18 +12,6 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 
 	srand(time(NULL));
 
-
-	//Generare pozitii pentru capcane (marcate cu X pe harta)
-	int nr_max_capcane = 2*nrRows;
-	while (nr_max_capcane) {
-		int poz_x = rand() % (nrRows - 1) + 1;
-		int poz_y = rand() % (nrColumns - 1) + 1;
-		if (matrix[poz_x][poz_y] == '_') {
-			nr_max_capcane--;
-			matrix[poz_x][poz_y] = 'X';
-		}
-	}
-
 	int ok = 0;
 	//Generare pozitie FINISH (marcat cu F pe harta)
 	do {
@@ -36,6 +24,20 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 		}
 	} while (ok == 0);
 
+	//Generare pozitii pentru capcane (marcate cu X pe harta)
+	int nr_max_capcane;
+	if (nrRows > nrColumns)
+		nr_max_capcane = 3*nrRows;
+	else
+		nr_max_capcane = 3*nrColumns;
+	while (nr_max_capcane) {
+		int poz_x = rand() % (nrRows - 1) + 1;
+		int poz_y = rand() % (nrColumns - 1) + 1;
+		if (matrix[poz_x][poz_y] == '_') {
+			nr_max_capcane--;
+			matrix[poz_x][poz_y] = 'X';
+		}
+	}
 }
 int Harta::getRows() const {
 	return this->nrRows;
