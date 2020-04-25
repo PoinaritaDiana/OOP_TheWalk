@@ -17,10 +17,12 @@ class Harta
 public:
 	Harta(const int rows, const int columns);
 	~Harta();
+
 	pair<int, int> getLocatie() const;							//Returnez pozitia locatiei unde trebuie sa ajunga robotul
-	char getMatrix(int, int) const;
-	int getRows() const;
-	int getColumns() const;
+	char getMatrix(int, int) const;								//Returnez ce se afla pe harta la coordonatele date
+	int getRows() const;										//Returnez numarul de randuri 
+	int getColumns() const;										//Returnez numarul de coloane
+
 	friend ostream& operator << (ostream&, const Harta&);
 
 	void moveRobot(Robot* const robot, const int linie, const int coloana);

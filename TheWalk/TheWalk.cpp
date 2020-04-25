@@ -36,6 +36,7 @@ int welcome_user() {
 	return op;
 }
 
+
 int main() {
 
 	int tip_robot=welcome_user();   //Se afiseaza un mesaj de inceput si optiunile dintre care utilizatorul alege robotul cu care doreste sa joace
@@ -44,8 +45,7 @@ int main() {
 
 	cout << "The Force will be with you. Always.\n";
 	G.print();
-	int cont;
-	int runda = 0;
+
 	cout << endl;
 
 	cout << "Cum doriti sa se desfasoare jocul?" << endl;
@@ -79,13 +79,12 @@ int main() {
 		if (cont == 0)
 			cout << endl << "Game Over\nYou didn't reach your destination. Good luck next time!" << endl;
 	}
-	/*
 	else {
-		while (G.finish()==1) {
+		while (G.getFinish()==0) {
 			G.runGame();
 		}
 		G.print();
 	}
-	*/
+
 	return 0;
 }

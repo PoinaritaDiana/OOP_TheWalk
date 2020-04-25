@@ -4,7 +4,6 @@ Robot::Robot(int id) {
 	this->type = id;
 }
 
-
 void Robot::setPosition(const pair<int,int> p) {
 	this->position = p;
 }

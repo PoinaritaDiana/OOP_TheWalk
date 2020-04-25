@@ -1,6 +1,7 @@
 #include "Game.h"
 
 Game::Game() {
+	//Construiesc harta
 	cout << "Se creaza jocul. Va rugam asteptati...\n\n";
 	int x, y;
 	cout << "Introduceti dimensiunile hartii:\nLatime:";
@@ -27,7 +28,6 @@ Game::~Game() {
 }
 
 void Game::setRobot(int id) {
-	idRobot = id;
 	/*
 	if (id == 1)
 		r = new RobotTerminator(1);
@@ -38,29 +38,34 @@ void Game::setRobot(int id) {
 		r = new RobotWalle(3);
 }
 
-
+//Simulare runda
 void Game::runGame() {
 	pair<int, int> poz, newPoz;
 	runda++;
 	cout << "Runda " << runda << " :" << endl;
-	Robot* rb = this->r;
-	newPoz = rb->chooseNewPosition(*H);				//Pozitia pe care trebuie sa se mute robotul
-	poz = rb->getPosition();						//Pozitia pe care era inainte
 
-	//Inseamna ca n a gasit o alta pozitie pe care sa se duca
+	Robot* rb = this->r;
+	poz = rb->getPosition();						//Pozitia pe care se afla robotul
+	newPoz = rb->chooseNewPosition(*H);				//Noua pozitie pe care trebuie sa se mute robotul
+
+	//Inseamna ca nu a gasit o alta pozitie pe care sa se duca, deci robotul s-a blocat
 	if (newPoz == make_pair(-1, -1)) {
-		cout << "Oh nu, Robotul s-a blocat" << endl;
-		cout << "Opsss";
+		cout << "Oh nu, Robotul s-a blocat :(" << endl;
+		cout << "Game Over\nYou didn't reach your destination. Good luck next time!" << endl;
 		this->finish = 1;
 	}
 	else {
 		cout << "Robotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
+		//Mut robotul pe noua pozitie
 		H->moveRobot(rb, newPoz.first, newPoz.second);
+
+		//Daca robotul a ajuns la destinatie
 		if (newPoz == H->getLocatie()) {
-			cout << "Felicitari!Ai ajuns la destinatie" << endl;
+			cout << "WINNER!!! \nCongratulations! Ai ajuns la destinatie!" << endl;
 			this->finish = 1;
 		}
 	}
+	cout << endl;
 }
 
 int Game::getFinish() {

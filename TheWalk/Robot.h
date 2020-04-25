@@ -7,26 +7,20 @@ class Harta;
 
 class Robot
 {
-public:
-	struct position {
-		int row;
-		int column;
-	};
-private:
-	int nr_lives = 3;
+	int nrVieti = 2;
 	int type;
 	pair <int, int> position = { 0,0 };
 
 protected:
 	void setPosition(const pair<int, int>);			//Setez noua pozitie a robotului dupa fiecare runda
+													//Este protected pentru a nu putea fi modificata pozitia decat prin clasa "Harta"
 public:
 	Robot(int);
 	virtual ~Robot(){};
 
 	pair<int,int> getPosition() const;				//Getter pentru pozitia curenta a robotului
 
-
-	virtual pair<int, int> chooseNewPosition(const Harta& h) const = 0;			//Functie care returneaza noua pozitie pe care se va afla robotul
+	virtual pair<int, int> chooseNewPosition(const Harta& h) const = 0;			//Functie care returneaza noua pozitie de pe harta a robotului
 
 	friend Harta;
 };
