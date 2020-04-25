@@ -47,15 +47,15 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 		}
 	}
 	while (nrItems) {
-		int type = rand() % 3 + 1;					//Am items de 3 tipuri (pentru ca am 3 tipuri de roboti) - marcate cu A, B, C
+		int type = rand() % 3 + 1;					//Am items de 3 tipuri (fiecare este compatibil cu un tip de robot) - marcate cu T, Q, W
 		int poz_x = rand() % (nrRows - 1) + 1;
 		int poz_y = rand() % (nrColumns - 1) + 1;
 		if (matrix[poz_x][poz_y] == '_') {
 			nrItems--;
 			switch (type) {
-				case 1: matrix[poz_x][poz_y] = 'A'; break;
-				case 2: matrix[poz_x][poz_y] = 'B'; break;
-				case 3: matrix[poz_x][poz_y] = 'C'; break;
+				case 1: matrix[poz_x][poz_y] = 'T'; break;
+				case 2: matrix[poz_x][poz_y] = 'Q'; break;
+				case 3: matrix[poz_x][poz_y] = 'W'; break;
 			}
 		}
 	}

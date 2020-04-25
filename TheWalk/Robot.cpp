@@ -11,3 +11,11 @@ void Robot::setPosition(const pair<int,int> p) {
 pair<int, int> Robot::getPosition() const {
 	return this->position;
 }
+
+int Robot::getNrVieti() const {
+	return this->nrVieti;
+}
+
+int Robot::getType() const {
+	return this->type;
+}

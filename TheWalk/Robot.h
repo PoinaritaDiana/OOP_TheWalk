@@ -19,8 +19,12 @@ public:
 	virtual ~Robot(){};
 
 	pair<int,int> getPosition() const;				//Getter pentru pozitia curenta a robotului
+	int getNrVieti() const;							//Getter pentru numarul de vieti ale robotului
+	int getType() const;							//Getter pentru tipul robotului
+
 
 	virtual pair<int, int> chooseNewPosition(const Harta& h) const = 0;			//Functie care returneaza noua pozitie de pe harta a robotului
+	virtual void itemEffect(char) = 0;											//Functie care modeleaza cum se comporta robotul fata de un item
 
 	friend Harta;
 };

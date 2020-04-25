@@ -31,11 +31,11 @@ void Game::setRobot(int id) {
 	/*
 	if (id == 1)
 		r = new RobotTerminator(1);
+		*/
 	if(id==2)
 		r = new RobotQrio(2);
-		*/
-	if(id==3)
-		r = new RobotWalle(3);
+	//if(id==3)
+		//r = new RobotWalle(3);
 }
 
 //Simulare runda
