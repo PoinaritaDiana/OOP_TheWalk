@@ -25,6 +25,7 @@ public:
 
 	friend ostream& operator << (ostream&, const Harta&);
 
-	void moveRobot(Robot* const robot, const int linie, const int coloana);
+	friend Robot;
+	//void moveRobot(Robot* const robot, const int linie, const int coloana);
 };
 

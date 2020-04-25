@@ -55,13 +55,13 @@ void Game::runGame() {
 		this->finish = 1;
 	}
 	else {
-		cout << "Robotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
 		//Mut robotul pe noua pozitie
-		H->moveRobot(rb, newPoz.first, newPoz.second);
+		cout << "\nRobotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
+		rb->moveRobot(rb, newPoz.first, newPoz.second);
 
 		//Daca robotul a ajuns la destinatie
 		if (newPoz == H->getLocatie()) {
-			cout << "WINNER!!! \nCongratulations! Ai ajuns la destinatie!" << endl;
+			cout << "\nWINNER!!! \nCongratulations! Ai ajuns la destinatie!" << endl;
 			this->finish = 1;
 		}
 	}

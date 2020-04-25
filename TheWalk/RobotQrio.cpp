@@ -48,24 +48,30 @@ pair<int, int> RobotQrio::chooseNewPosition(const Harta& h) const {
 							p = make_pair(l, c);
 						}
 				}
-				else 
-					//Daca e capcana
-					if (h.getMatrix(l, c) != 'X') {
-						d = sqrt((loc.first - l) * (loc.first - l) + (loc.second - c) * (loc.second - c));
-						if (dminc == -1) {
-							dminc = d;
-							pc = make_pair(l, c);
-						}
-						else
-							if (d < dminc) {
+				else {
+					//Daca mai are vieti sau stie sa detoneze bombe, inseamna ca poate alege si o pozitie pe care se afla capcana
+					if (this->detonateBomb != 0 || this->getNrVieti != 0) {
+						//Daca e capcana
+						if (h.getMatrix(l, c) != 'X') {
+							d = sqrt((loc.first - l) * (loc.first - l) + (loc.second - c) * (loc.second - c));
+							if (dminc == -1) {
 								dminc = d;
 								pc = make_pair(l, c);
 							}
+							else
+								if (d < dminc) {
+									dminc = d;
+									pc = make_pair(l, c);
+								}
+						}
+
 					}
+				}
 			}
 		}
 	//Daca am gasit o pozitie pe care nu se afla capcana, atunci o aleg
 	//Daca nu, aleg pozitia pe care se afla capcana dar este cat mai aproape de destinatie
+	//Daca ambele sunt (-1,-1) inseamna ca robotul nu mai poate avansa sub nicio forma, deci s-a blocat
 	if (p != make_pair(-1, -1))
 		return p;
 	else
