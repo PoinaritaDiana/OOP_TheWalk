@@ -38,20 +38,18 @@ int welcome_user() {
 
 
 int main() {
-
 	int tip_robot=welcome_user();   //Se afiseaza un mesaj de inceput si optiunile dintre care utilizatorul alege robotul cu care doreste sa joace
 	Game G;
 	G.setRobot(tip_robot);
 
-	cout << "The Force will be with you. Always.\n";
+	cout << "The Force will be with you. Always." << endl;;
 	G.print();
 
 	cout << endl;
-
 	cout << "Cum doriti sa se desfasoare jocul?" << endl;
 	cout << "Optiunea 1 : Oprirea simularii la stadiul curent, cu afisarea configuratiei hartii la sfarsitul unei runde simulate" << endl;
 	cout << "Optiunea 2 : Simulare succesiva a rundelor " << endl;
-	cout << "\n Optiunea dumneavoastra: ";
+	cout << "\n  Optiunea dumneavoastra: ";
 	int op;
 	cin >> op;
 	while (op!=1 && op!=2) {
@@ -62,7 +60,6 @@ int main() {
 	system("pause");
 	cout << endl;
 
-	
 	if (op == 1) {
 		bool f = 0;
 		int cont = 1;

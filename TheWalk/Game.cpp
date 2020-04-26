@@ -7,13 +7,13 @@ Game::Game() {
 	cout << "Introduceti dimensiunile hartii:\nLatime:";
 	cin >> x;
 	while (x < 15) {
-		cout << "Valoarea introdusa trebuie sa fie cel putin 15.\nIntroduceti o noua dimensiune:";
+		cout << "Valoarea introdusa trebuie sa fie cel putin 15. Introduceti o noua dimensiune:";
 		cin >> x;
 	}
 	cout << "Lungime:";
 	cin >> y;
 	while (y < 15) {
-		cout << "Valoarea introdusa trebuie sa fie cel putin 15.\nIntroduceti o noua dimensiune:";
+		cout << "Valoarea introdusa trebuie sa fie cel putin 15. Introduceti o noua dimensiune:";
 		cin >> y;
 	}
 	cout << endl;
@@ -56,7 +56,7 @@ void Game::runGame() {
 	}
 	else {
 		//Mut robotul pe noua pozitie
-		cout << "\nRobotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
+		cout << "\nRobotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")";
 		rb->moveRobot(*H, newPoz.first, newPoz.second);
 
 		//Daca robotul a ajuns la destinatie
