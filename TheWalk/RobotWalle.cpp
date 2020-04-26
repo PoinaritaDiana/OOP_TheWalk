@@ -9,7 +9,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		Daca vede finish-ul, se va indrepta catre el cu orice pret (daca exista capcana: ori va arunca un bloc gigantic de deseuri
 		pentru a distruge capcana, ori isi va sacrifica una din vieti pentru a ajunge la destinatie)
 		Daca nu vede finish-ul, robotul alege pozitia in directia in care se afla un item (daca exista).
-		Impart in 8 directii si el va alege directia de suma maxima:
+		Impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima:
 		item = 3
 		liber = 2
 		capcana = 1
@@ -30,11 +30,11 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		capcana capcana = 2
 		capcana margine / vizitat = 1
 
-		-    -    -
-		  -  -  - 
+		     -    
+		     -  
 		- -  R  - -
-		  -  -  -
-	    -    -    -
+		     -  
+	         -    
 	*/
 
 	pair <int, int> p = make_pair(-1, -1);
@@ -43,18 +43,49 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 	int j = this->getPosition().second;
 	//Destinatia
 	pair <int, int> loc = h.getLocatie();
-	/*
+	
 	if (abs(loc.first - i) <= 2 && abs(loc.second - j) <= 2) {
-		
+		int l, c;
+		l = i; 
+		c = j;
+		if (loc.first == i) {
+			if (loc.second < j) c--;
+			if (loc.second > j) c++;
+		}
+		else {
+			if (loc.second == j) {
+				if (loc.first < i) l--;
+				if (loc.first > i) l++;
+			}
+			else {
+				if (loc.first < i && loc.second < j) {
+					l --;
+					c --;
+				}
+				if (loc.first < i && loc.second > j) {
+					l --;
+					c ++;
+				}
+				if (loc.first > i && loc.second > j) {
+					l ++;
+					c ++;
+				}
+				if (loc.first > i && loc.second < j) {
+					l ++;
+					c --;
+				}
+			}
+		}
+		p = make_pair(l, c);
 	}
-	else {*/
+	else {
 		int sumMax = 0;
 		int sum;
 		pair <int, int> pMax = make_pair(-1, -1);
 		double dMin = -1;
 
 		//Directia 1
-		if (i - 1 >= 0 && h.matrix[i-1][j] != '/') {
+		if (i - 1 >= 0 && h.matrix[i - 1][j] != '/') {
 			if (h.matrix[i - 1][j] == 'X') sum = 1;
 			else {
 				if (h.matrix[i - 1][j] == '_') sum = 2;
@@ -77,7 +108,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 			}
 			else
 				if (sum == sumMax) {
-					double d = sqrt((loc.first - (i-1)) * (loc.first - (i - 1)) + (loc.second - j) * (loc.second - j));
+					double d = sqrt((loc.first - (i - 1)) * (loc.first - (i - 1)) + (loc.second - j) * (loc.second - j));
 					if (d < dMin) {
 						sumMax = sum;
 						pMax = make_pair(i - 1, j);
@@ -87,7 +118,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		}
 
 		//Directia 2
-		if (j+1 < h.nrColumns && h.matrix[i][j + 1 ] != '/') {
+		if (j + 1 < h.nrColumns && h.matrix[i][j + 1] != '/') {
 			if (h.matrix[i][j + 1] == 'X') sum = 1;
 			else {
 				if (h.matrix[i][j + 1] == '_') sum = 2;
@@ -105,7 +136,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 			if (sum > sumMax) {
 				sumMax = sum;
 				pMax = make_pair(i, j + 1);
-				double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j+1)) * (loc.second - (j + 1)));
+				double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j + 1)) * (loc.second - (j + 1)));
 				dMin = d;
 			}
 			else
@@ -113,7 +144,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 					double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j + 1)) * (loc.second - (j + 1)));
 					if (d < dMin) {
 						sumMax = sum;
-						pMax = make_pair(i, j+1);
+						pMax = make_pair(i, j + 1);
 						dMin = d;
 					}
 				}
@@ -153,14 +184,14 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		}
 
 		//Directia 4
-		if (j - 1 >=0 && h.matrix[i][j - 1] != '/') {
+		if (j - 1 >= 0 && h.matrix[i][j - 1] != '/') {
 			if (h.matrix[i][j - 1] == 'X') sum = 1;
 			else {
 				if (h.matrix[i][j - 1] == '_') sum = 2;
 				else sum = 3;
 			}
 
-			if (j - 2 >=0 && h.matrix[i][j - 2] != '/') {
+			if (j - 2 >= 0 && h.matrix[i][j - 2] != '/') {
 				if (h.matrix[i][j - 2] == 'X') sum += 1;
 				else {
 					if (h.matrix[i][j - 2] == '_') sum += 2;
@@ -186,6 +217,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		}
 
 		p = pMax;
+	}
 
 	return p;
 }
@@ -249,13 +281,13 @@ void RobotWalle::itemEffect(char i) {
 		if (this->throwAndDestroy == 1)
 			cout << "\nWall-E a primit primul sau bloc gigantic cu care poate distruge capcane!";
 		else
-			cout << "\nWall-E are acum " << this->throwAndDestroy << "blocuri gigantice.";
+			cout << "\nWall-E are acum " << this->throwAndDestroy << " blocuri gigantice.";
 	}
 	//Daca a adunat suficiente cuburi(adica 3), le poate transforma intr-un bloc gigantic
 	if (this->otherItems == 3){
 		this->throwAndDestroy++;
 		this->otherItems = 0;
 		cout << "\nUhuuu! Wall-E a strans 3 cuburi si a reusit sa le transforme intr-un bloc gigantic!";
-		cout << "\nWall-E are acum " << this->throwAndDestroy << "blocuri gigantice.";
+		cout << "\nWall-E are acum " << this->throwAndDestroy << " blocuri gigantice.";
 	}
 }
