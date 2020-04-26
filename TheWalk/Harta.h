@@ -26,7 +26,5 @@ public:
 	friend class RobotQrio;
 	friend class RobotTerminator;
 	friend class RobotWalle;
-
-	//void moveRobot(Robot* const robot, const int linie, const int coloana);
 };
 

@@ -86,20 +86,6 @@ pair <int, int> Harta::getLocatie() const {
 char Harta::getMatrix(int i, int j) const{
 	return this->matrix[i][j];
 }
- 
-//Functia prin care robotul se muta pe o alta pozitie pe harta (functia primeste coordonatele pt noua pozitie)
-/*
-void Harta::moveRobot(Robot* const robot, const int linie, const int coloana) {
-
-	//Trebuie sa marchez noua pozitie cu 'R' si sa sterg 'R'-ul vechi
-	matrix[linie][coloana] = 'R';
-	pair<int, int> p = robot->getPosition();
-	matrix[p.first][p.second] = '/';
-
-	//Setez noua pozitie a robotului
-	robot->setPosition(make_pair(linie, coloana));
-}
-*/
 
 //Afisare harta
 ostream& operator << (ostream& out, const Harta& H) {

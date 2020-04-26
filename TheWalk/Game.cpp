@@ -34,8 +34,8 @@ void Game::setRobot(int id) {
 		*/
 	if(id==2)
 		r = new RobotQrio(2);
-	//if(id==3)
-		//r = new RobotWalle(3);
+	if(id==3)
+		r = new RobotWalle(3);
 }
 
 //Simulare runda
@@ -78,6 +78,7 @@ void Game::runGame() {
 int Game::getFinish() {
 	return this->finish;
 }
+
 void Game::print() {
 	cout << *H;
 }

@@ -49,7 +49,7 @@ pair<int, int> RobotQrio::chooseNewPosition(const Harta& h) const {
 						}
 				}
 				else {
-					//Daca mai are vieti sau stie sa detoneze bombe, inseamna ca poate alege si o pozitie pe care se afla capcana
+					//Daca mai are vieti sau stie sa dezamorseze bombe, inseamna ca poate alege si o pozitie pe care se afla capcana
 					if (this->detonateBomb != 0 || this->getNrVieti() != 0) {
 						//Daca e capcana
 						if (h.getMatrix(l, c) != 'X') {
@@ -90,9 +90,9 @@ void RobotQrio::moveRobot(Harta& h, const int linie, const int coloana) {
 			cout << "\n BOOOM! Qrio tocmai a dezamorsat bomba si este cu un pas mai aproape de destinatia lui!";
 			this->detonateBomb--;
 			if (this->detonateBomb == 0)
-				cout << "\nDin pacate, Qrio nu mai stie acum sa detoneze nicio bomba";
+				cout << "\nDin pacate, Qrio nu mai stie acum sa dezamorseze nicio bomba";
 			else
-				cout << "\nQrio mai stie cum sa detoneze " << this->detonateBomb << " bombe";
+				cout << "\nQrio mai stie cum sa dezamorseze " << this->detonateBomb << " bombe";
 		}
 		else {
 			this->setNrVieti();
