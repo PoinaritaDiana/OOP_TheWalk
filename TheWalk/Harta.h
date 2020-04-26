@@ -6,8 +6,6 @@
 #include "Robot.h"
 using namespace std;
 
-class Robot;
-
 class Harta
 {
 	int nrRows;
@@ -25,7 +23,10 @@ public:
 
 	friend ostream& operator << (ostream&, const Harta&);
 
-	friend Robot;
+	friend class RobotQrio;
+	friend class RobotTerminator;
+	friend class RobotWalle;
+
 	//void moveRobot(Robot* const robot, const int linie, const int coloana);
 };
 

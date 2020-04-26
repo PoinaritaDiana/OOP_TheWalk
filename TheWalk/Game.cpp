@@ -57,7 +57,7 @@ void Game::runGame() {
 	else {
 		//Mut robotul pe noua pozitie
 		cout << "\nRobotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")" << endl;
-		rb->moveRobot(rb, newPoz.first, newPoz.second);
+		rb->moveRobot(*H, newPoz.first, newPoz.second);
 
 		//Daca robotul a ajuns la destinatie
 		if (newPoz == H->getLocatie()) {

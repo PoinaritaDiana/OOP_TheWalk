@@ -7,6 +7,7 @@ public:
 	RobotQrio(const int id) : Robot(id) {};
 
 	pair<int, int> chooseNewPosition(const Harta& h) const;
+	void moveRobot(Harta&, const int, const int);
 	void itemEffect(char);											
 
 };

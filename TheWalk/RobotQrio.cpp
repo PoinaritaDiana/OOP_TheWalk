@@ -78,6 +78,49 @@ pair<int, int> RobotQrio::chooseNewPosition(const Harta& h) const {
 		return pc;
 }
 
+
+
+void RobotQrio::moveRobot(Harta& h, const int linie, const int coloana) {
+	/*
+		Daca pe noua pozitie se afla o capcana, inseamna ca trebuie sa dezamorseze bomba sau sa renunte la o viata
+		Daca stie sa dezamorseze bomba, mai intai foloseste acest avantaj. Altfel, trebuie sa renunte la o viata
+	*/
+	if (h.matrix[linie][coloana] == 'X') {
+		if (this->detonateBomb != 0) {
+			cout << "\n BOOOM! Qrio tocmai a dezamorsat bomba si este cu un pas mai aproape de destinatia lui!";
+			this->detonateBomb--;
+			if (this->detonateBomb == 0)
+				cout << "\nDin pacate, Qrio nu mai stie acum sa detoneze nicio bomba";
+			else
+				cout << "\nQrio mai stie cum sa detoneze " << this->detonateBomb << " bombe";
+		}
+		else {
+			this->setNrVieti();
+			if (this->getNrVieti() == 0)
+				cout << "\nQrio si-a sacrificat ultima viata pentru a isi indeplini misiunea.";
+			else {
+				cout << "\nQrio si-a sacrificat o viata pentru a isi indeplini misiunea.";
+				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";
+			}
+		}
+	}
+
+	//Daca pe noua pozitie se afla un item
+	if (h.matrix[linie][coloana] == 'T' || h.matrix[linie][coloana] == 'w' || h.matrix[linie][coloana] == 'Q') {
+		this->itemEffect(h.matrix[linie][coloana]);
+	}
+
+	//Trebuie sa marchez noua pozitie cu 'R' si sa sterg 'R'-ul vechi
+	h.matrix[linie][coloana] = 'R';
+	pair<int, int> p = this->getPosition();
+	h.matrix[p.first][p.second] = '/';
+
+	//Setez noua pozitie a robotului
+	this->setPosition(make_pair(linie, coloana));
+}
+
+
+
 void RobotQrio::itemEffect(char i) {
 	//Daca intalneste un item corespunzator tipului sau, robotul Qrio va invata cum sa dezamorseze o bomba.
 	//Daca intalneste un item care nu ii corespunde, robotul Qrio nu are voie sa il ia.

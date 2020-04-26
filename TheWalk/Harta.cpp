@@ -91,9 +91,6 @@ char Harta::getMatrix(int i, int j) const{
 /*
 void Harta::moveRobot(Robot* const robot, const int linie, const int coloana) {
 
-	
-
-
 	//Trebuie sa marchez noua pozitie cu 'R' si sa sterg 'R'-ul vechi
 	matrix[linie][coloana] = 'R';
 	pair<int, int> p = robot->getPosition();
