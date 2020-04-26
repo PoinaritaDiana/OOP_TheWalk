@@ -42,7 +42,7 @@ void Game::setRobot(int id) {
 void Game::runGame() {
 	pair<int, int> poz, newPoz;
 	runda++;
-	cout << "Runda " << runda << " :" << endl;
+	cout << "\nRunda " << runda << " :";
 
 	Robot* rb = this->r;
 	poz = rb->getPosition();						//Pozitia pe care se afla robotul
@@ -62,6 +62,13 @@ void Game::runGame() {
 		//Daca robotul a ajuns la destinatie
 		if (newPoz == H->getLocatie()) {
 			cout << "\nWINNER!!! \nCongratulations! Ai ajuns la destinatie!" << endl;
+			this->finish = 1;
+		}
+
+		//Daca robotul si-a pierdut toate vietile inainte sa ajunga la destinatie
+		if (rb->getNrVieti()==0) {
+			cout << "\nOh nu, Robotul nu mai poate continua jocul :(";
+			cout << "\nGame Over\nYou didn't reach your destination. Good luck next time!" << endl;
 			this->finish = 1;
 		}
 	}

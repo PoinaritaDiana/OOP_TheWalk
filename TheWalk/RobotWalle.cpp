@@ -3,15 +3,15 @@
 #include <map>
 #include <cmath>
 
+/*
 pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
-	/* 
+	
 		Robotul Wall-E nu poate vedea decat o pozitie in jurul sau (are vizibilitate 1)
 		El incearca pe cat posibil sa evite capcanele, alegand mereu pozitia disponibila de pe harta care este cat mai aproape de destinatie
 		Daca nu are de ales si este inconjurat de capcane, ori va arunca un bloc gigantic de deseuri pentru a distruge capcana (daca a adunat
 		suficient gunoi), ori isi va sacrifica una din vieti pentru a ajunge la destinatie.
-	*/
-
 }
+*/
 
 
 void RobotWalle::itemEffect(char i) {

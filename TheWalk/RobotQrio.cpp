@@ -50,7 +50,7 @@ pair<int, int> RobotQrio::chooseNewPosition(const Harta& h) const {
 				}
 				else {
 					//Daca mai are vieti sau stie sa detoneze bombe, inseamna ca poate alege si o pozitie pe care se afla capcana
-					if (this->detonateBomb != 0 || this->getNrVieti != 0) {
+					if (this->detonateBomb != 0 || this->getNrVieti() != 0) {
 						//Daca e capcana
 						if (h.getMatrix(l, c) != 'X') {
 							d = sqrt((loc.first - l) * (loc.first - l) + (loc.second - c) * (loc.second - c));
@@ -106,7 +106,7 @@ void RobotQrio::moveRobot(Harta& h, const int linie, const int coloana) {
 	}
 
 	//Daca pe noua pozitie se afla un item
-	if (h.matrix[linie][coloana] == 'T' || h.matrix[linie][coloana] == 'w' || h.matrix[linie][coloana] == 'Q') {
+	if (h.matrix[linie][coloana] == 'T' || h.matrix[linie][coloana] == 'W' || h.matrix[linie][coloana] == 'Q') {
 		this->itemEffect(h.matrix[linie][coloana]);
 	}
 
