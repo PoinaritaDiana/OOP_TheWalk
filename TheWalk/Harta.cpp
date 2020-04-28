@@ -1,7 +1,6 @@
 #include "Harta.h"
 
-
-// Constructor harta (functia primeste numarul de randuri si de coloane)
+// Constructor harta 
 Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns){
 	matrix = new char* [nrRows];
 	for (int i = 0; i < nrRows; i++)
@@ -14,8 +13,7 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 	matrix[0][0] = 'R';      
 
 	srand(time(NULL));
-
-	//Generare random pozitie destinatie (marcat cu F pe harta)
+	//Generare pozitie destinatie (marcat cu F pe harta)
 	int ok = 0;
 	do {
 		int poz_final_x = rand() % nrRows;
@@ -27,7 +25,7 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 		}
 	} while (ok == 0);
 
-	//Generare random pozitii pentru capcane (marcat cu X pe harta) si pentru items (marcat cu I pe harta)
+	//Generare pozitii pentru capcane (X pe harta) si items (I pe harta)
 	int nrCapcane, nrItems;
 	if (nrRows < nrColumns) {
 		nrItems = nrRows;
@@ -47,7 +45,8 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 		}
 	}
 	while (nrItems) {
-		int type = rand() % 3 + 1;					//Am items de 3 tipuri (fiecare este compatibil cu un tip de robot) - marcate cu T, Q, W
+		//Items de 3 tipuri (fiecare este compatibil cu un tip de robot) - T, Q, W
+		int type = rand() % 3 + 1;					
 		int poz_x = rand() % (nrRows - 1) + 1;
 		int poz_y = rand() % (nrColumns - 1) + 1;
 		if (matrix[poz_x][poz_y] == '_') {
@@ -68,7 +67,6 @@ Harta::~Harta() {
 	delete[] matrix;
 	nrRows = 0;
 	nrColumns = 0;
-	locatie = make_pair(-1, -1);
 }
 
 int Harta::getRows() const {
@@ -92,10 +90,10 @@ void Harta::setMatrix(const int i, const int j, const char c) {
 }
 
 //Afisare harta
-ostream& operator << (ostream& out, const Harta& H) {
-	for (int i = 0; i < H.nrRows; i++) {
-		for (int j = 0; j < H.nrColumns; j++)
-			out << H.matrix[i][j]<<" ";
+ostream& operator << (ostream& out, const Harta& h) {
+	for (int i = 0; i < h.nrRows; i++) {
+		for (int j = 0; j < h.nrColumns; j++)
+			out << h.matrix[i][j]<<" ";
 		out << endl;
 	}
 	return out;
