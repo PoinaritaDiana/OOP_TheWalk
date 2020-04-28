@@ -3,15 +3,16 @@
 #include <map>
 #include <cmath>
 
-pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
-	/*  Are vizibilitate 2 (poate ”vedea” la maxim 4 pozitii fata de pozitia lui curenta)
-		Nu poate trece printr-un loc prin care a mai trecut
-		Daca vede finish-ul: se poate misca in orice directie
-		si se va indrepta catre el cu orice pret 
-		(daca exista capcana: ori va arunca un bloc gigantic de deseuri
-		pentru a distruge capcana, ori isi va sacrifica o vieta)
-		Daca nu vede finish-ul:
-		impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima:
+
+/* 
+	Are vizibilitate 2 (poate ”vedea” la maxim 4 pozitii fata de pozitia lui curenta)
+	Nu poate trece printr-un loc prin care a mai trecut
+	Daca vede finish-ul: se poate misca in orice directie
+	si se va indrepta catre el cu orice pret
+	(daca exista capcana: ori va arunca un bloc gigantic de deseuri
+	pentru a distruge capcana, ori isi va sacrifica o vieta)
+	Daca nu vede finish-ul:
+	impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima:
 		item = 3
 		liber = 2
 		capcana = 1
@@ -32,24 +33,26 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		capcana capcana = 2
 		capcana margine / vizitat = 1
 
-		     -    
-		     -  
+			 -
+			 -
 		- -  R  - -
-		     -  
-	         -    
-	*/
+			 -
+			 -
+*/
 
+pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 	pair <int, int> p = make_pair(-1, -1);
+
 	//Pozitia curenta
 	int i = this->getPosition().first;
 	int j = this->getPosition().second;
+
 	//Destinatia
 	pair <int, int> loc = h.getLocatie();
 	
+	//Daca finish-ul se afla in aria de vizibilitate
 	if (abs(loc.first - i) <= 2 && abs(loc.second - j) <= 2) {
-		int l, c;
-		l = i; 
-		c = j;
+		int l=i, c=j;
 		if (loc.first == i) {
 			if (loc.second < j) c--;
 			if (loc.second > j) c++;
@@ -267,6 +270,16 @@ void RobotWalle::moveRobot(Harta& h, const int linie, const int coloana) {
 
 
 void RobotWalle::itemEffect(char i) {
+	/*
+		Robotul Wall-E aduna gunoi în cuburi mici, pe care le poate folosi
+		pentru a construi blocuri gigantice cu care sa distruga capcanele
+		Daca intalneste un item corespunzator tipului sau,
+		primeste un bloc gigantic: throwAndDestroy++
+		Daca intalneste alt item, primeste un cub mic: otherItems++
+		Atunci cand are 3 cuburi (otherItems=3),
+		poate construi un alt bloc gigantic: throwAndDestroy++ (si otherItems devine 0)
+	*/
+
 	if (i == 'T') {
 		cout << "\nAi gasit un item pentru Terminator";
 		cout << "\nWall-E a transformat acest item intr-un cub.";
@@ -285,7 +298,9 @@ void RobotWalle::itemEffect(char i) {
 		else
 			cout << "\nWall-E are acum " << this->throwAndDestroy << " blocuri gigantice.";
 	}
-	//Daca a adunat suficiente cuburi(adica 3), le poate transforma intr-un bloc gigantic
+
+	//Daca a adunat suficiente cuburi(adica 3), 
+	//le poate transforma intr-un bloc gigantic
 	if (this->otherItems == 3){
 		this->throwAndDestroy++;
 		this->otherItems = 0;

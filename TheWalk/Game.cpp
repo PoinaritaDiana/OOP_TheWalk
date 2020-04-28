@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game():runda(0), finish(0) {
+Game::Game():runda(0), finish(0), r(NULL) {
 	//Construiesc harta
 	cout << "Se creeaza jocul. Please wait...\n\n";
 	cout << "Introduceti dimensiunile hartii:\n";
@@ -34,7 +34,6 @@ Game::Game():runda(0), finish(0) {
 			cout << "Valoarea introdusa trebuie sa fie cel putin 15. ";
 		}
 	}
-
 	cout << endl;
 	H = new Harta(x, y);
 }
@@ -57,6 +56,7 @@ void Game::setRobot(int id) {
 		r = new RobotWalle(3);
 }
 
+
 //Simulare runda
 void Game::runGame() {
 	pair<int, int> poz, newPoz;
@@ -64,13 +64,13 @@ void Game::runGame() {
 	cout << "\nRunda " << runda << " :";
 
 	Robot* rb = this->r;
-	poz = rb->getPosition();						//Pozitia pe care se afla robotul
-	newPoz = rb->chooseNewPosition(*H);				//Noua pozitie pe care trebuie sa se mute robotul
+	poz = rb->getPosition();					//Pozitia pe care se afla robotul
+	newPoz = rb->chooseNewPosition(*H);			//Noua pozitie pe care trebuie sa se mute robotul
 
-	//Inseamna ca nu a gasit o alta pozitie pe care sa se duca, deci robotul s-a blocat
+	//Inseamna ca nu a gasit o alta pozitie, deci robotul s-a blocat
 	if (newPoz == make_pair(-1, -1)) {
-		cout << "Oh nu, Robotul s-a blocat :(" << endl;
-		cout << "Game Over\nYou didn't reach your destination. Good luck next time!" << endl;
+		cout << "\nOh nu, Robotul s-a blocat :(";
+		cout << "\nGame Over\nYou didn't reach your destination. Good luck next time!" << endl;
 		this->finish = 1;
 	}
 	else {
@@ -86,7 +86,7 @@ void Game::runGame() {
 
 		//Daca robotul si-a pierdut toate vietile inainte sa ajunga la destinatie
 		if (rb->getNrVieti()==0) {
-			cout << "\nOh nu, Robotul nu mai poate continua jocul :(";
+			cout << "\nRobotul nu mai poate continua jocul :(";
 			cout << "\nGame Over\nYou didn't reach your destination. Good luck next time!" << endl;
 			this->finish = 1;
 		}

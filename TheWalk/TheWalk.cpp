@@ -12,7 +12,7 @@ int welcome_user() {
 	cout << "\n\n\t\t\t THE WALK GAME \n\n";
 	cout << "\t Welcome, user! \n";
 	cout << "\t Avem o harta pe care se afla un robot, jucatorul tau, in coltul din stanga sus.\n";
-	cout << "\t Pe harta exista o locatie unde robotul tau trebuie sa ajunga, marcata cu F.\n";
+	cout << "\t Pe harta exista o locatie unde robotul tau trebuie sa ajunga.\n";
 	cout << "\t De asemenea, pe harta sunt distribuite diferite capcane care il pot incurca pe robotul tau sau item-uri care sa il ajute in calatoria lui.\n\n";
 	cout << "\t You can choose your fighter:\n";
 	cout << "\t Optiunea 1: TERMINATOR - strong and ambitious\n";
@@ -38,13 +38,12 @@ int welcome_user() {
 
 
 int main() {
-	int tip_robot=welcome_user();   //Se afiseaza un mesaj de inceput si optiunile dintre care utilizatorul alege robotul cu care doreste sa joace
+	int tip_robot=welcome_user();   
 	Game G;
 	G.setRobot(tip_robot);
 
-	cout << "The Force will be with you. Always." << endl;;
+	cout << "The Force will be with you. Always." << endl;
 	G.print();
-
 	cout << endl;
 	cout << "Cum doriti sa se desfasoare jocul?" << endl;
 	cout << "Optiunea 1 : Oprirea simularii la stadiul curent, cu afisarea configuratiei hartii la sfarsitul unei runde simulate" << endl;
@@ -61,7 +60,7 @@ int main() {
 	cout << endl;
 
 	if (op == 1) {
-		bool f = 0;
+		int f = 0;
 		int cont = 1;
 		do {
 			G.runGame();
