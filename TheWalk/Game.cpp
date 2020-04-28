@@ -1,21 +1,36 @@
 #include "Game.h"
 
+
+int Game::runda = 0;
+int Game::finish = 0;
+
 Game::Game() {
 	//Construiesc harta
-	cout << "Se creeaza jocul. Va rugam asteptati...\n\n";
+	cout << "Se creeaza jocul. Please wait...\n\n";
+	cout << "Introduceti dimensiunile hartii:";
 	int x, y;
-	cout << "Introduceti dimensiunile hartii:\nLatime:";
-	cin >> x;
-	while (x < 15) {
+	try {
+		cout << "\nLatime:";
+		cin >> x;
+		if (x < 15)
+			throw x;
+	}
+	catch (int) {
 		cout << "Valoarea introdusa trebuie sa fie cel putin 15. Introduceti o noua dimensiune:";
 		cin >> x;
 	}
-	cout << "Lungime:";
-	cin >> y;
-	while (y < 15) {
+
+	try {
+		cout << "Lungime:";
+		cin >> y;
+		if (y < 15)
+			throw y;
+	}
+	catch (int) {
 		cout << "Valoarea introdusa trebuie sa fie cel putin 15. Introduceti o noua dimensiune:";
 		cin >> y;
 	}
+
 	cout << endl;
 	H = new Harta(x, y);
 }

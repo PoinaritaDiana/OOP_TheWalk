@@ -23,6 +23,3 @@ public:
 	void setRobot(int);			//Setez tipul de robot 
 	int getFinish();			//Returnez finish
 };
-
-int Game::runda = 0;
-int Game::finish = 0;
