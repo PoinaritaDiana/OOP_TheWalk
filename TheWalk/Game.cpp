@@ -2,7 +2,7 @@
 
 Game::Game() {
 	//Construiesc harta
-	cout << "Se creaza jocul. Va rugam asteptati...\n\n";
+	cout << "Se creeaza jocul. Va rugam asteptati...\n\n";
 	int x, y;
 	cout << "Introduceti dimensiunile hartii:\nLatime:";
 	cin >> x;
