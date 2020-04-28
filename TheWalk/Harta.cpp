@@ -87,6 +87,10 @@ char Harta::getMatrix(int i, int j) const{
 	return this->matrix[i][j];
 }
 
+void Harta::setMatrix(const int i, const int j, const char c) {
+	this->matrix[i][j] = c;
+}
+
 //Afisare harta
 ostream& operator << (ostream& out, const Harta& H) {
 	for (int i = 0; i < H.nrRows; i++) {
