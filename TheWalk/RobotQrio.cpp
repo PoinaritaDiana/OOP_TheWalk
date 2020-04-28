@@ -113,9 +113,9 @@ void RobotQrio::moveRobot(Harta& h, const int linie, const int coloana) {
 	}
 
 	//Trebuie sa marchez noua pozitie cu 'R'
-	h.matrix[linie][coloana] = 'R';
+	h.setMatrix(linie, coloana, 'R');
 	pair<int, int> p = this->getPosition();
-	h.matrix[p.first][p.second] = '/';
+	h.setMatrix(p.first, p.second, '/');
 
 	//Setez noua pozitie a robotului
 	this->setPosition(make_pair(linie, coloana));
@@ -124,8 +124,12 @@ void RobotQrio::moveRobot(Harta& h, const int linie, const int coloana) {
 
 
 void RobotQrio::itemEffect(char i) {
-	//Daca intalneste un item corespunzator tipului sau, robotul Qrio va invata cum sa dezamorseze o bomba.
-	//Daca intalneste un item care nu ii corespunde, robotul Qrio nu are voie sa il ia.
+	/*
+		Daca intalneste un item corespunzator tipului sau, 
+		robotul Qrio va invata cum sa dezamorseze o bomba.
+		Daca intalneste un item care nu ii corespunde, 
+		robotul Qrio nu are voie sa il ia.
+	*/
 
 	if (i == 'T') {
 		cout << "\nAi gasit un item pentru Terminator";
