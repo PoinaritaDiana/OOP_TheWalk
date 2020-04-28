@@ -230,12 +230,15 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 
 void RobotWalle::moveRobot(Harta& h, const int linie, const int coloana) {
 	/*
-		Daca pe noua pozitie se afla o capcana, inseamna ca trebuie sa arunce un bloc sau sa renunte la o viata
-		Daca are blocuri, mai intai foloseste acest avantaj. Altfel, trebuie sa renunte la o viata
+		Daca pe noua pozitie se afla o capcana, 
+		inseamna ca trebuie sa arunce un bloc sau sa renunte la o viata
+		Daca are blocuri, mai intai foloseste acest avantaj. 
+		Altfel, trebuie sa renunte la o viata
 	*/
-	if (h.matrix[linie][coloana] == 'X') {
+
+	if (h.getMatrix(linie, coloana) == 'X') {
 		if (this->throwAndDestroy != 0) {
-			cout << "\n WOW! Wall-E tocmai a distrus o capcana si este cu un pas mai aproape de destinatia lui!";
+			cout << "\nWOW! Wall-E tocmai a distrus o capcana si este cu un pas mai aproape de destinatia lui!";
 			this->throwAndDestroy--;
 			if (this->throwAndDestroy == 0)
 				cout << "\nDin pacate, Wall-E nu are niciun bloc.";
@@ -254,15 +257,14 @@ void RobotWalle::moveRobot(Harta& h, const int linie, const int coloana) {
 	}
 	
 	//Daca pe noua pozitie se afla un item
-	if (h.matrix[linie][coloana] == 'T' || h.matrix[linie][coloana] == 'W' || h.matrix[linie][coloana] == 'Q') {
-		this->itemEffect(h.matrix[linie][coloana]);
+	if (h.getMatrix(linie, coloana) == 'T' || h.getMatrix(linie, coloana) == 'W' || h.getMatrix(linie, coloana) == 'Q') {
+		this->itemEffect(h.getMatrix(linie, coloana));
 	}
 
-
-	//Trebuie sa marchez noua pozitie cu 'R' si sa sterg 'R'-ul vechi
-	h.matrix[linie][coloana] = 'R';
+	//Trebuie sa marchez noua pozitie cu 'R'
+	h.setMatrix(linie, coloana, 'R');
 	pair<int, int> p = this->getPosition();
-	h.matrix[p.first][p.second] = '/';
+	h.setMatrix(p.first, p.second, '/');
 
 	//Setez noua pozitie a robotului
 	this->setPosition(make_pair(linie, coloana));
