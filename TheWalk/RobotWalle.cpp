@@ -4,12 +4,14 @@
 #include <cmath>
 
 pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
-	/* Robotul Wall-E are vizibilitate 2 (poate ”vedea” la maxim 4 pozitii fata de pozitia lui curenta)
-		Robotul nu poate trece printr-un loc prin care a mai trecut.
-		Daca vede finish-ul, se va indrepta catre el cu orice pret (daca exista capcana: ori va arunca un bloc gigantic de deseuri
-		pentru a distruge capcana, ori isi va sacrifica una din vieti pentru a ajunge la destinatie)
-		Daca nu vede finish-ul, robotul alege pozitia in directia in care se afla un item (daca exista).
-		Impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima:
+	/*  Are vizibilitate 2 (poate ”vedea” la maxim 4 pozitii fata de pozitia lui curenta)
+		Nu poate trece printr-un loc prin care a mai trecut
+		Daca vede finish-ul: se poate misca in orice directie
+		si se va indrepta catre el cu orice pret 
+		(daca exista capcana: ori va arunca un bloc gigantic de deseuri
+		pentru a distruge capcana, ori isi va sacrifica o vieta)
+		Daca nu vede finish-ul:
+		impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima:
 		item = 3
 		liber = 2
 		capcana = 1
