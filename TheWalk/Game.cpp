@@ -1,10 +1,6 @@
 #include "Game.h"
 
-
-int Game::runda = 0;
-int Game::finish = 0;
-
-Game::Game() {
+Game::Game():runda(0), finish(0) {
 	//Construiesc harta
 	cout << "Se creeaza jocul. Please wait...\n\n";
 	cout << "Introduceti dimensiunile hartii:\n";

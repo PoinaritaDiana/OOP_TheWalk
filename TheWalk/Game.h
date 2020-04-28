@@ -9,10 +9,10 @@ using namespace std;
 
 class Game
 {
-	Harta* H;					//Harta pe care se joaca 
-	Robot* r;					//Robotul ales de utilizator pentru acest joc
-	static int runda;			//Numarul rundei 
-	static int finish;			//Marchez finish cu 1 daca jocul s-a terminat
+	Harta* H;				//Harta pe care se joaca 
+	Robot* r;				//Robotul ales de utilizator pentru acest joc
+	int runda;				//Numarul rundei 
+	int finish;				//Marchez finish cu 1 daca jocul s-a terminat
 
 public:
 	Game();
