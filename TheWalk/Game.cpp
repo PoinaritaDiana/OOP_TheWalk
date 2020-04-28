@@ -7,28 +7,36 @@ int Game::finish = 0;
 Game::Game() {
 	//Construiesc harta
 	cout << "Se creeaza jocul. Please wait...\n\n";
-	cout << "Introduceti dimensiunile hartii:";
+	cout << "Introduceti dimensiunile hartii:\n";
 	int x, y;
-	try {
-		cout << "\nLatime:";
-		cin >> x;
-		if (x < 15)
-			throw x;
-	}
-	catch (int) {
-		cout << "Valoarea introdusa trebuie sa fie cel putin 15. Introduceti o noua dimensiune:";
-		cin >> x;
+	int flag = 0;
+	while (flag == 0) {
+		try {
+			cout << "Latime:";
+			cin >> x;
+			if (x < 15)
+				throw x;
+			else
+				flag = 1;
+		}
+		catch (int) {
+			cout << "Valoarea introdusa trebuie sa fie cel putin 15. ";
+		}
 	}
 
-	try {
-		cout << "Lungime:";
-		cin >> y;
-		if (y < 15)
-			throw y;
-	}
-	catch (int) {
-		cout << "Valoarea introdusa trebuie sa fie cel putin 15. Introduceti o noua dimensiune:";
-		cin >> y;
+	flag = 0;
+	while (flag == 0) {
+		try {
+			cout << "Lungime:";
+			cin >> y;
+			if (y < 15)
+				throw y;
+			else
+				flag = 1;
+		}
+		catch (int) {
+			cout << "Valoarea introdusa trebuie sa fie cel putin 15. ";
+		}
 	}
 
 	cout << endl;
