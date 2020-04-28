@@ -90,17 +90,17 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		double dMin = -1;
 
 		//Directia 1
-		if (i - 1 >= 0 && h.matrix[i - 1][j] != '/') {
-			if (h.matrix[i - 1][j] == 'X') sum = 1;
+		if (i - 1 >= 0 && h.getMatrix(i - 1, j) != '/') {
+			if (h.getMatrix(i - 1, j) == 'X') sum = 1;
 			else {
-				if (h.matrix[i - 1][j] == '_') sum = 2;
+				if (h.getMatrix(i - 1, j) == '_') sum = 2;
 				else sum = 3;
 			}
 
-			if (i - 2 >= 0 && h.matrix[i - 2][j] != '/') {
-				if (h.matrix[i - 2][j] == 'X') sum += 1;
+			if (i - 2 >= 0 && h.getMatrix(i - 2, j) != '/') {
+				if (h.getMatrix(i - 2, j) == 'X') sum += 1;
 				else {
-					if (h.matrix[i - 2][j] == '_') sum += 2;
+					if (h.getMatrix(i - 2, j) == '_') sum += 2;
 					else sum += 3;
 				}
 			}
@@ -123,17 +123,17 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		}
 
 		//Directia 2
-		if (j + 1 < h.nrColumns && h.matrix[i][j + 1] != '/') {
-			if (h.matrix[i][j + 1] == 'X') sum = 1;
+		if (j + 1 < h.getColumns() && h.getMatrix(i,j + 1) != '/') {
+			if (h.getMatrix(i, j + 1) == 'X') sum = 1;
 			else {
-				if (h.matrix[i][j + 1] == '_') sum = 2;
+				if (h.getMatrix(i, j + 1) == '_') sum = 2;
 				else sum = 3;
 			}
 
-			if (j + 2 < h.nrColumns && h.matrix[i][j + 2] != '/') {
-				if (h.matrix[i][j + 2] == 'X') sum += 1;
+			if (j + 2 < h.getColumns() && h.getMatrix(i, j + 2) != '/') {
+				if (h.getMatrix(i, j + 2) == 'X') sum += 1;
 				else {
-					if (h.matrix[i][j + 2] == '_') sum += 2;
+					if (h.getMatrix(i, j + 2) == '_') sum += 2;
 					else sum += 3;
 				}
 			}
@@ -156,17 +156,17 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		}
 
 		//Directia 3
-		if (i + 1 < h.nrRows && h.matrix[i + 1][j] != '/') {
-			if (h.matrix[i + 1][j] == 'X') sum = 1;
+		if (i + 1 < h.getRows() && h.getMatrix(i + 1, j) != '/') {
+			if (h.getMatrix(i + 1, j) == 'X') sum = 1;
 			else {
-				if (h.matrix[i + 1][j] == '_') sum = 2;
+				if (h.getMatrix(i + 1, j) == '_') sum = 2;
 				else sum = 3;
 			}
 
-			if (i + 2 < h.nrRows && h.matrix[i + 2][j] != '/') {
-				if (h.matrix[i + 2][j] == 'X') sum += 1;
+			if (i + 2 < h.getRows() && h.getMatrix(i + 2, j) != '/') {
+				if (h.getMatrix(i + 2, j) == 'X') sum += 1;
 				else {
-					if (h.matrix[i + 2][j] == '_') sum += 2;
+					if (h.getMatrix(i + 2, j) == '_') sum += 2;
 					else sum += 3;
 				}
 			}
@@ -189,17 +189,17 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		}
 
 		//Directia 4
-		if (j - 1 >= 0 && h.matrix[i][j - 1] != '/') {
-			if (h.matrix[i][j - 1] == 'X') sum = 1;
+		if (j - 1 >= 0 && h.getMatrix(i,j - 1) != '/') {
+			if (h.getMatrix(i, j - 1) == 'X') sum = 1;
 			else {
-				if (h.matrix[i][j - 1] == '_') sum = 2;
+				if (h.getMatrix(i, j - 1) == '_') sum = 2;
 				else sum = 3;
 			}
 
-			if (j - 2 >= 0 && h.matrix[i][j - 2] != '/') {
-				if (h.matrix[i][j - 2] == 'X') sum += 1;
+			if (j - 2 >= 0 && h.getMatrix(i, j - 2) != '/') {
+				if (h.getMatrix(i, j - 2) == 'X') sum += 1;
 				else {
-					if (h.matrix[i][j - 2] == '_') sum += 2;
+					if (h.getMatrix(i, j - 2) == '_') sum += 2;
 					else sum += 3;
 				}
 			}

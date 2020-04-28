@@ -26,6 +26,6 @@ public:
 	friend ostream& operator << (ostream&, const Harta&);
 
 	friend class RobotTerminator;
-	friend class RobotWalle;
+	
 };
 
