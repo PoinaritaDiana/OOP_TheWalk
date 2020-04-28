@@ -89,19 +89,19 @@ void RobotQrio::moveRobot(Harta& h, const int linie, const int coloana) {
 
 	if (h.getMatrix(linie, coloana) == 'X') {
 		if (this->detonateBomb != 0) {
-			cout << "\n BOOOM! Qrio tocmai a dezamorsat bomba si este cu un pas mai aproape de destinatia lui!";
+			cout << "\nBOOOM! Qrio tocmai a dezamorsat bomba si este cu un pas mai aproape de destinatia lui!";
 			this->detonateBomb--;
 			if (this->detonateBomb == 0)
-				cout << "\nDin pacate, Qrio nu mai stie acum sa dezamorseze nicio bomba";
+				cout << "\nDin pacate, Qrio nu mai stie acum sa dezamorseze nicio bomba :(";
 			else
-				cout << "\nQrio mai stie cum sa dezamorseze " << this->detonateBomb << " bombe";
+				cout << "\nQrio mai stie cum sa dezamorseze " << this->detonateBomb << " bombe.";
 		}
 		else {
 			this->setNrVieti();
 			if (this->getNrVieti() == 0)
-				cout << "\nQrio si-a sacrificat ultima viata pentru a isi indeplini misiunea.";
+				cout << "\nQrio is dead!!\nEl si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
 			else {
-				cout << "\nQrio si-a sacrificat o viata pentru a isi indeplini misiunea.";
+				cout << "\nQrio si-a sacrificat o viata pentru a-si indeplini misiunea.";
 				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";
 			}
 		}
