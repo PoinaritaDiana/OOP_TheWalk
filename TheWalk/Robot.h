@@ -20,6 +20,7 @@ public:
 	int getType() const;							//Getter pentru tipul robotului
 	void setPosition(const pair<int, int>);			//Setez noua pozitie a robotului dupa fiecare runda
 	void setNrVieti();								//Scad numarul de vieti daca este nevoie
+	void addViata();
 
 	virtual pair<int, int> chooseNewPosition(const Harta& h) const = 0;			//Noua pozitie de pe harta a robotului
 	virtual void moveRobot(Harta&, const int, const int) = 0;					//Muta robotul pe noua pozitie aleasa

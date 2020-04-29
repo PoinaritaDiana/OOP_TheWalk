@@ -10,6 +10,11 @@ void Robot::setNrVieti() {
 	this->nrVieti--;
 }
 
+void Robot::addViata() {
+	this->nrVieti++;
+}
+
+
 pair<int, int> Robot::getPosition() const {
 	return this->position;
 }
