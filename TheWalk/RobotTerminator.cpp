@@ -5,8 +5,46 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 }
 */
 
-void RobotTerminator::moveRobot(Harta&, const int, const int) {
+void RobotTerminator::moveRobot(Harta& h, const int linie, const int coloana) {
+	/*
+		Daca pe noua pozitie se afla o capcana,
+		inseamna ca isi foloseste armura (daca are) sau renunta la o viata
+		Daca are armura, mai intai foloseste acest avantaj.
+		Altfel, trebuie sa renunte la o viata
+	*/
 
+	if (h.getMatrix(linie, coloana) == 'X') {
+		if (this->armor != 0) {
+			cout << "\nWOW! Terminator tocmai a distrus o capcana!";
+			this->armor--;
+			if (this->armor == 0)
+				cout << "\nDin pacate, Terminator nu mai are armura, deci si-a pierdut imunitatea.";
+			else
+				cout << "\nTerminator mai poate folosi armura pentru inca "<< this->armor<<" capcane.";
+		}
+		else {
+			this->setNrVieti();
+			if (this->getNrVieti() == 0)
+				cout << "\nTerminator si-a sacrificat ultima viata pentru a isi indeplini misiunea.";
+			else {
+				cout << "\nTerminator si-a sacrificat o viata pentru a isi indeplini misiunea.";
+				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";
+			}
+		}
+	}
+
+	//Daca pe noua pozitie se afla un item
+	if (h.getMatrix(linie, coloana) == 'T' || h.getMatrix(linie, coloana) == 'W' || h.getMatrix(linie, coloana) == 'Q') {
+		this->itemEffect(h.getMatrix(linie, coloana));
+	}
+
+	//Trebuie sa marchez noua pozitie cu 'R'
+	h.setMatrix(linie, coloana, 'R');
+	pair<int, int> p = this->getPosition();
+	h.setMatrix(p.first, p.second, '/');
+
+	//Setez noua pozitie a robotului
+	this->setPosition(make_pair(linie, coloana));
 }
 
 void RobotTerminator::itemEffect(char i) {
@@ -21,7 +59,7 @@ void RobotTerminator::itemEffect(char i) {
 	if (i == 'T') {
 		cout << "\nAi gasit un item pentru Terminator";
 		cout << "\nRobotul tocmai a castigat o armura care il protejeaza de urmatoarele 3 capcane!";
-		this->armor++;
+		this->armor+=3;
 		cout << "\nTerminator are " << this->armor << " armuri, deci este protejat de urmatoarele "<< this->armor*3 <<" capcane.";
 	}
 	if (i == 'W') {
