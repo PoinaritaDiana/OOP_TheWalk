@@ -8,7 +8,6 @@
 using namespace std;
 
 int welcome_user() {
-	system("MODE 100");
 	cout << "\n\n\t\t\t THE WALK GAME \n\n";
 	cout << "\t Welcome, user! \n";
 	cout << "\t Avem o harta pe care se afla un robot, jucatorul tau, in coltul din stanga sus.\n";

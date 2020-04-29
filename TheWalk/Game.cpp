@@ -63,9 +63,8 @@ void Game::runGame() {
 	runda++;
 	cout << "\nRunda " << runda << " :";
 
-	Robot* rb = this->r;
-	poz = rb->getPosition();					//Pozitia pe care se afla robotul
-	newPoz = rb->chooseNewPosition(*H);			//Noua pozitie pe care trebuie sa se mute robotul
+	poz = this->r->getPosition();					//Pozitia pe care se afla robotul
+	newPoz = this->r->chooseNewPosition(*H);			//Noua pozitie pe care trebuie sa se mute robotul
 
 	//Inseamna ca nu a gasit o alta pozitie, deci robotul s-a blocat
 	if (newPoz == make_pair(-1, -1)) {
@@ -76,7 +75,7 @@ void Game::runGame() {
 	else {
 		//Mut robotul pe noua pozitie
 		cout << "\nRobotul s-a mutat de pe pozitia (" << poz.first << "," << poz.second << ") pe pozitia (" << newPoz.first << "," << newPoz.second << ")";
-		rb->moveRobot(*H, newPoz.first, newPoz.second);
+		this->r->moveRobot(*H, newPoz.first, newPoz.second);
 
 		//Daca robotul a ajuns la destinatie
 		if (newPoz == H->getLocatie()) {
@@ -85,7 +84,7 @@ void Game::runGame() {
 		}
 
 		//Daca robotul si-a pierdut toate vietile inainte sa ajunga la destinatie
-		if (rb->getNrVieti()==0) {
+		if (this->r->getNrVieti()==0) {
 			cout << "\nRobotul nu mai poate continua jocul :(";
 			cout << "\nGame Over\nYou didn't reach your destination. Good luck next time!" << endl;
 			this->finish = 1;

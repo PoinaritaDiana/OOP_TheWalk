@@ -2,11 +2,11 @@
 #include "Robot.h"
 
 class RobotWalle: public Robot{
-	int throwAndDestroy = 0;
-	int otherItems = 0;
+	int throwAndDestroy;
+	int otherItems;
 
 public:
-	RobotWalle(const int id) : Robot(id) {};
+	RobotWalle(const int id) : Robot(id), throwAndDestroy(0), otherItems(0) {};
 
 	pair<int, int> chooseNewPosition(const Harta& h) const;
 	void moveRobot(Harta&, const int, const int);

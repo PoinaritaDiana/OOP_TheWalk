@@ -3,7 +3,6 @@
 #include <map>
 #include <cmath>
 
-
 /* 
 	Are vizibilitate 2 (poate ”vedea” la maxim 4 pozitii fata de pozitia lui curenta)
 	Nu poate trece printr-un loc prin care a mai trecut
