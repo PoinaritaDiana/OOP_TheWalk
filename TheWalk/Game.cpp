@@ -63,7 +63,7 @@ void Game::runGame() {
 	runda++;
 	cout << "\nRunda " << runda << " :";
 
-	poz = this->r->getPosition();					//Pozitia pe care se afla robotul
+	poz = this->r->getPosition();						//Pozitia pe care se afla robotul
 	newPoz = this->r->chooseNewPosition(*H);			//Noua pozitie pe care trebuie sa se mute robotul
 
 	//Inseamna ca nu a gasit o alta pozitie, deci robotul s-a blocat

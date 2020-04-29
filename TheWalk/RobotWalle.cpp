@@ -11,26 +11,18 @@
 	(daca exista capcana: ori va arunca un bloc gigantic de deseuri
 	pentru a distruge capcana, ori isi va sacrifica o vieta)
 	Daca nu vede finish-ul:
-	impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima:
-		item = 3
-		liber = 2
-		capcana = 1
-		margine / vizitat = 0
+	impart in 4 directii (sus,jos,stanga, dreapta) si el va alege directia de suma maxima,
+	iar in caz de egalitate, cea mai apropiata de finish:
+		item = 3, liber = 2, capcana = 1, margine / vizitat = 0
+	Sume posibile:
+		item item = 6, item liber = 5, 
+		item capcana = 4, item margine / vizitat = 3
 
-		item item = 6
-		item liber = 5
-		item capcana = 4
-		item margine / vizitat = 3
+		liber item  = 5, liber liber = 4,
+		liber capcana  = 3, liber margine / vizitat = 2
 
-		liber item  = 5
-		liber liber = 4
-		liber capcana  = 3
-		liber margine / vizitat = 2
-
-		capcana item = 4
-		capcana liber = 3
-		capcana capcana = 2
-		capcana margine / vizitat = 1
+		capcana item = 4, capcana liber = 3
+		capcana capcana = 2, capcana margine / vizitat = 1
 
 			 -
 			 -
@@ -83,19 +75,20 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		p = make_pair(l, c);
 	}
 	else {
-		int sumMax = 0;
-		int sum;
+		int sumMax = 0;			//Suma maxima
+		int sum;				//Suma curenta
+		double dMin = -1;		//Distanta minima
 		pair <int, int> pMax = make_pair(-1, -1);
-		double dMin = -1;
 
-		//Directia 1
+		//Directia 1(sus)
 		if (i - 1 >= 0 && h.getMatrix(i - 1, j) != '/') {
+			//Prima casuta
 			if (h.getMatrix(i - 1, j) == 'X') sum = 1;
 			else {
 				if (h.getMatrix(i - 1, j) == '_') sum = 2;
 				else sum = 3;
 			}
-
+			//A doua casuta
 			if (i - 2 >= 0 && h.getMatrix(i - 2, j) != '/') {
 				if (h.getMatrix(i - 2, j) == 'X') sum += 1;
 				else {
@@ -103,7 +96,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 					else sum += 3;
 				}
 			}
-
+			//Daca suma curenta > suma maxima de pana acum
 			if (sum > sumMax) {
 				sumMax = sum;
 				pMax = make_pair(i - 1, j);
@@ -111,6 +104,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 				dMin = d;
 			}
 			else
+				//Daca sunt egale, compar distanta de la prima pozitie pana la finish
 				if (sum == sumMax) {
 					double d = sqrt((loc.first - (i - 1)) * (loc.first - (i - 1)) + (loc.second - j) * (loc.second - j));
 					if (d < dMin) {
@@ -121,7 +115,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 				}
 		}
 
-		//Directia 2
+		//Directia 2(dreapta)
 		if (j + 1 < h.getColumns() && h.getMatrix(i,j + 1) != '/') {
 			if (h.getMatrix(i, j + 1) == 'X') sum = 1;
 			else {
@@ -154,7 +148,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 				}
 		}
 
-		//Directia 3
+		//Directia 3(jos)
 		if (i + 1 < h.getRows() && h.getMatrix(i + 1, j) != '/') {
 			if (h.getMatrix(i + 1, j) == 'X') sum = 1;
 			else {
@@ -187,7 +181,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 				}
 		}
 
-		//Directia 4
+		//Directia 4(stanga)
 		if (j - 1 >= 0 && h.getMatrix(i,j - 1) != '/') {
 			if (h.getMatrix(i, j - 1) == 'X') sum = 1;
 			else {

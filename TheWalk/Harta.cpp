@@ -29,11 +29,11 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 	int nrCapcane, nrItems;
 	if (nrRows < nrColumns) {
 		nrItems = nrRows;
-		nrCapcane = 2 * nrColumns;
+		nrCapcane = 3 * nrColumns;
 	}
 	else {
 		nrItems = nrColumns;
-		nrCapcane = 2 * nrRows;
+		nrCapcane = 3 * nrRows;
 	}
 
 	while (nrCapcane) {
