@@ -10,26 +10,115 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 	//Destinatia
 	pair <int, int> loc = h.getLocatie();
 
+	//Daca finish-ul se afla in aria de vizibilitate
 	if (abs(loc.first - i) <= 2 && abs(loc.second - j) <= 2) {
+		int l = i, c = j;
+		if (loc.first == i) {
+			if (loc.second > j) {
+				c++;
+				p = make_pair(l, c);
+			}
+		}
+		else {
+			if (loc.second == j) {
+				if (loc.first < i) l--;
+				if (loc.first > i) l++;
+				p = make_pair(l, c);
+			}
+			else {
+				int c1 = 0, c2 = 0, nrItems1 = 0, nrItems2 = 0;
+				int copyi1 = i, copyj1 = j;
+				int copyi2 = i, copyj2 = j;
+				if (loc.first < i) {
+					//Sus si apoi dreapta
+					while (copyi1 > loc.first) {
+						copyi1--;
+						if (h.getMatrix(copyi1, j) == 'X') c1++;
+						if (h.getMatrix(copyi1, j) == 'T' || h.getMatrix(copyi1, j) == 'W' || h.getMatrix(copyi1, j) == 'Q') nrItems1++;
+					}
+					while (copyj1 < loc.second) {
+						copyj1++;
+						if (h.getMatrix(copyi1, copyj1) == 'X') c1++;
+						if (h.getMatrix(copyi1, copyj1) == 'T' || h.getMatrix(copyi1, copyj1) == 'W' || h.getMatrix(copyi1, copyj1) == 'Q') nrItems1++;
+					}
+
+					//Dreapta si apoi sus
+					while (copyj2 < loc.second) {
+						copyj2++;
+						if (h.getMatrix(i, copyj2) == 'X') c2++;
+						if (h.getMatrix(i, copyj2) == 'T' || h.getMatrix(i, copyj2) == 'W' || h.getMatrix(i, copyj2) == 'Q') nrItems2++;
+					}
+					while (copyi2 > loc.first) {
+						copyi2--;
+						if (h.getMatrix(copyi2, copyj2) == 'X') c2++;
+						if (h.getMatrix(copyi2, copyj2) == 'T' || h.getMatrix(copyi2, copyj2) == 'W' || h.getMatrix(copyi2, copyj2) == 'Q') nrItems2++;
+					}
+
+					if (c1 < c2) p = make_pair(i-1,j);
+					else {
+						if(c1>c2) p = make_pair(i,j+1);
+						else {
+							if(nrItems1>nrItems2) p = make_pair(i - 1, j);
+							else p = make_pair(i , j+1);
+						}
+					}
+				}
+				if (loc.first > i) {
+					//Jos si apoi dreapta
+					while (copyi1 < loc.first) {
+						copyi1++;
+						if (h.getMatrix(copyi1, j) == 'X') c1++;
+						if (h.getMatrix(copyi1, j) == 'T' || h.getMatrix(copyi1, j) == 'W' || h.getMatrix(copyi1, j) == 'Q') nrItems1++;
+					}
+					while (copyj1 < loc.second) {
+						copyj1++;
+						if (h.getMatrix(copyi1, copyj1) == 'X') c1++;
+						if (h.getMatrix(copyi1, copyj1) == 'T' || h.getMatrix(copyi1, copyj1) == 'W' || h.getMatrix(copyi1, copyj1) == 'Q') nrItems1++;
+					}
+
+					//Dreapta si apoi jos
+					while (copyj2 < loc.second) {
+						copyj2++;
+						if (h.getMatrix(i, copyj2) == 'X') c2++;
+						if (h.getMatrix(i, copyj2) == 'T' || h.getMatrix(i, copyj2) == 'W' || h.getMatrix(i, copyj2) == 'Q') nrItems2++;
+					}
+					while (copyi2 < loc.first) {
+						copyi2++;
+						if (h.getMatrix(copyi2, copyj2) == 'X') c2++;
+						if (h.getMatrix(copyi2, copyj2) == 'T' || h.getMatrix(copyi2, copyj2) == 'W' || h.getMatrix(copyi2, copyj2) == 'Q') nrItems2++;
+					}
+
+					if (c1 < c2) p = make_pair(i + 1, j);
+					else {
+						if (c1 > c2) p = make_pair(i, j + 1);
+						else {
+							if (nrItems1 > nrItems2) p = make_pair(i + 1, j);
+							else p = make_pair(i, j + 1);
+						}
+					}
+				}
+			}
+		}
 	}
 	else {
 		if (j % 2 == 0) {
-			if (i + 1 < h.getRows()) 
+			if (i + 1 < h.getRows())
 				p = make_pair(i + 1, j);
-			else{
+			else {
 				if (i + 1 == h.getRows())
 					if (j + 1 < h.getColumns())
 						p = make_pair(i, j + 1);
 			}
 		}
 		else {
-			if (i - 1 >=0) 
+			if (i - 1 >= 0)
 				p = make_pair(i - 1, j);
 			else
-				if(j+1<h.getColumns())
+				if (j + 1 < h.getColumns())
 					p = make_pair(i, j + 1);
 		}
 	}
+	
 	return p;
 }
 
@@ -87,9 +176,9 @@ void RobotTerminator::itemEffect(char i) {
 
 	if (i == 'T') {
 		cout << "\nAi gasit un item pentru Terminator";
-		cout << "\nRobotul tocmai a castigat o armura care il protejeaza de urmatoarele 3 capcane!";
-		this->armor+=3;
-		cout << "\nTerminator are " << this->armor << " armuri, deci este protejat de urmatoarele "<< this->armor*3 <<" capcane.";
+		cout << "\nRobotul tocmai a castigat o armura care il protejeaza de urmatoarele 5 capcane!";
+		this->armor+=5;
+		cout << "\nTerminator este protejat de urmatoarele "<< this->armor <<" capcane.";
 	}
 	if (i == 'W') {
 		cout << "\nAi gasit un item pentru Wall-E";
