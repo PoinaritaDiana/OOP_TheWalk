@@ -31,6 +31,7 @@
 			 -
 */
 
+
 pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 	pair <int, int> p = make_pair(-1, -1);
 
@@ -40,7 +41,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 
 	//Destinatia
 	pair <int, int> loc = h.getLocatie();
-	
+
 	//Daca finish-ul se afla in aria de vizibilitate
 	if (abs(loc.first - i) <= 2 && abs(loc.second - j) <= 2) {
 		int l=i, c=j;
@@ -80,143 +81,57 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		double dMin = -1;		//Distanta minima
 		pair <int, int> pMax = make_pair(-1, -1);
 
-		//Directia 1(sus)
-		if (i - 1 >= 0 && h.getMatrix(i - 1, j) != '/') {
-			//Prima casuta
-			if (h.getMatrix(i - 1, j) == 'X') sum = 1;
-			else {
-				if (h.getMatrix(i - 1, j) == '_') sum = 2;
-				else sum = 3;
-			}
-			//A doua casuta
-			if (i - 2 >= 0 && h.getMatrix(i - 2, j) != '/') {
-				if (h.getMatrix(i - 2, j) == 'X') sum += 1;
+		//Se deplaseaza sus, dreapta, jos, stanga
+		//Array pentru coordonatele vecinilor 
+		pair<int,int> prim[4] = { make_pair(i - 1,j), make_pair(i ,j+1), make_pair(i + 1,j), make_pair(i ,j-1) };
+		//Array pentru coordonatele pozitiilor la distanta 2
+		pair<int,int> second[4] = { make_pair(i - 2,j), make_pair(i ,j + 2), make_pair(i + 2,j), make_pair(i ,j - 1) };
+
+		for (int d = 0; d < 4; d++) {
+			int l = prim[d].first;
+			int c = prim[d].second;
+
+			if (l >= 0 && l < h.getRows() && c >= 0 && c < h.getColumns() && h.getMatrix(l, c) != '/') {
+				//Prima casuta = vecin
+				if (h.getMatrix(l, c) == 'X') sum = 1;
 				else {
-					if (h.getMatrix(i - 2, j) == '_') sum += 2;
-					else sum += 3;
+					if (h.getMatrix(l,c) == '_') sum = 2;
+					else sum = 3;
 				}
-			}
-			//Daca suma curenta > suma maxima de pana acum
-			if (sum > sumMax) {
-				sumMax = sum;
-				pMax = make_pair(i - 1, j);
-				double d = sqrt((loc.first - (i - 1)) * (loc.first - (i - 1)) + (loc.second - j) * (loc.second - j));
-				dMin = d;
-			}
-			else
-				//Daca sunt egale, compar distanta de la prima pozitie pana la finish
-				if (sum == sumMax) {
-					double d = sqrt((loc.first - (i - 1)) * (loc.first - (i - 1)) + (loc.second - j) * (loc.second - j));
-					if (d < dMin) {
-						sumMax = sum;
-						pMax = make_pair(i - 1, j);
-						dMin = d;
+
+				int ls = second[d].first;
+				int cs = second[d].second;
+				//A doua casuta (distanta 2)
+				if (ls >= 0 && ls < h.getRows() && cs >= 0 && cs < h.getColumns() && h.getMatrix(ls, cs) != '/') {
+					if (h.getMatrix(ls,cs) == 'X') sum += 1;
+					else {
+						if (h.getMatrix(ls,cs) == '_') sum += 2;
+						else sum += 3;
 					}
 				}
-		}
 
-		//Directia 2(dreapta)
-		if (j + 1 < h.getColumns() && h.getMatrix(i,j + 1) != '/') {
-			if (h.getMatrix(i, j + 1) == 'X') sum = 1;
-			else {
-				if (h.getMatrix(i, j + 1) == '_') sum = 2;
-				else sum = 3;
-			}
-
-			if (j + 2 < h.getColumns() && h.getMatrix(i, j + 2) != '/') {
-				if (h.getMatrix(i, j + 2) == 'X') sum += 1;
-				else {
-					if (h.getMatrix(i, j + 2) == '_') sum += 2;
-					else sum += 3;
+				//Daca suma curenta > suma maxima de pana acum
+				if (sum > sumMax) {
+					sumMax = sum;
+					pMax = make_pair(l, c);
+					double d = sqrt((loc.first - l) * (loc.first - l) + (loc.second - c) * (loc.second - c));
+					dMin = d;
 				}
-			}
-
-			if (sum > sumMax) {
-				sumMax = sum;
-				pMax = make_pair(i, j + 1);
-				double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j + 1)) * (loc.second - (j + 1)));
-				dMin = d;
-			}
-			else
-				if (sum == sumMax) {
-					double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j + 1)) * (loc.second - (j + 1)));
-					if (d < dMin) {
-						sumMax = sum;
-						pMax = make_pair(i, j + 1);
-						dMin = d;
+				else
+					//Daca sunt egale, compar distanta de la prima pozitie pana la finish
+					if (sum == sumMax) {
+						double d = sqrt((loc.first - l) * (loc.first - l) + (loc.second - c) * (loc.second - c));
+						if (d < dMin) {
+							sumMax = sum;
+							pMax = make_pair(l, c);
+							dMin = d;
+						}
 					}
-				}
-		}
-
-		//Directia 3(jos)
-		if (i + 1 < h.getRows() && h.getMatrix(i + 1, j) != '/') {
-			if (h.getMatrix(i + 1, j) == 'X') sum = 1;
-			else {
-				if (h.getMatrix(i + 1, j) == '_') sum = 2;
-				else sum = 3;
 			}
-
-			if (i + 2 < h.getRows() && h.getMatrix(i + 2, j) != '/') {
-				if (h.getMatrix(i + 2, j) == 'X') sum += 1;
-				else {
-					if (h.getMatrix(i + 2, j) == '_') sum += 2;
-					else sum += 3;
-				}
-			}
-
-			if (sum > sumMax) {
-				sumMax = sum;
-				pMax = make_pair(i + 1, j);
-				double d = sqrt((loc.first - (i + 1)) * (loc.first - (i + 1)) + (loc.second - j) * (loc.second - j));
-				dMin = d;
-			}
-			else
-				if (sum == sumMax) {
-					double d = sqrt((loc.first - (i + 1)) * (loc.first - (i + 1)) + (loc.second - j) * (loc.second - j));
-					if (d < dMin) {
-						sumMax = sum;
-						pMax = make_pair(i + 1, j);
-						dMin = d;
-					}
-				}
-		}
-
-		//Directia 4(stanga)
-		if (j - 1 >= 0 && h.getMatrix(i,j - 1) != '/') {
-			if (h.getMatrix(i, j - 1) == 'X') sum = 1;
-			else {
-				if (h.getMatrix(i, j - 1) == '_') sum = 2;
-				else sum = 3;
-			}
-
-			if (j - 2 >= 0 && h.getMatrix(i, j - 2) != '/') {
-				if (h.getMatrix(i, j - 2) == 'X') sum += 1;
-				else {
-					if (h.getMatrix(i, j - 2) == '_') sum += 2;
-					else sum += 3;
-				}
-			}
-
-			if (sum > sumMax) {
-				sumMax = sum;
-				pMax = make_pair(i, j - 1);
-				double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j - 1)) * (loc.second - (j - 1)));
-				dMin = d;
-			}
-			else
-				if (sum == sumMax) {
-					double d = sqrt((loc.first - i) * (loc.first - i) + (loc.second - (j - 1)) * (loc.second - (j - 1)));
-					if (d < dMin) {
-						sumMax = sum;
-						pMax = make_pair(i, j - 1);
-						dMin = d;
-					}
-				}
 		}
 
 		p = pMax;
 	}
-
 	return p;
 }
 
