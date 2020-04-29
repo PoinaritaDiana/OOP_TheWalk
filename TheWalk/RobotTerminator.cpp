@@ -1,9 +1,38 @@
 #include "RobotTerminator.h"
-/*
-pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 
+pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
+	pair <int, int> p = make_pair(-1, -1);
+
+	//Pozitia curenta
+	int i = this->getPosition().first;
+	int j = this->getPosition().second;
+
+	//Destinatia
+	pair <int, int> loc = h.getLocatie();
+
+	if (abs(loc.first - i) <= 2 && abs(loc.second - j) <= 2) {
+	}
+	else {
+		if (j % 2 == 0) {
+			if (i + 1 < h.getRows()) 
+				p = make_pair(i + 1, j);
+			else{
+				if (i + 1 == h.getRows())
+					if (j + 1 < h.getColumns())
+						p = make_pair(i, j + 1);
+			}
+		}
+		else {
+			if (i - 1 >=0) 
+				p = make_pair(i - 1, j);
+			else
+				if(j+1<h.getColumns())
+					p = make_pair(i, j + 1);
+		}
+	}
+	return p;
 }
-*/
+
 
 void RobotTerminator::moveRobot(Harta& h, const int linie, const int coloana) {
 	/*
