@@ -148,3 +148,13 @@ void RobotQrio::itemEffect(char i) {
 			cout << "\nQrio stie sa dezamorseze " << detonateBomb << "bombe.";
 	}
 }
+
+
+void RobotQrio::description() {
+	cout << "\nRobotul Qrio nu poate vedea decat o pozitie in jurul sau, adica are vizibilitate 1";
+	cout << "\nEl se poate deplasa in orice directie, dar nu poate trece printr - un loc prin care a mai trecut.";
+	cout << "\nStrategia lui este sa evite capcanele si alege pozitia libera de pe harta care este cat mai aproape de destinatie.";
+	cout << "\nDaca este inconjurat de capcane, ori va dezamorsa bomba (daca stie cum sa faca acest lucru), ori isi va sacrifica o viata";
+	cout << "\nDaca intalneste un item corespunzator tipului sau, robotul va invata cum sa dezamorseze o bomba.";
+	cout << "\nDaca intalneste un item care nu ii corespunde, robotul Qrio nu are voie sa il ia.";
+}
