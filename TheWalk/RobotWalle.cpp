@@ -4,7 +4,7 @@
 #include <cmath>
 
 /* 
-	Are vizibilitate 2 (poate ”vedea” la maxim 4 pozitii fata de pozitia lui curenta)
+	Are vizibilitate 2
 	Nu poate trece printr-un loc prin care a mai trecut
 	Daca vede finish-ul: se poate misca in orice directie
 	si se va indrepta catre el cu orice pret

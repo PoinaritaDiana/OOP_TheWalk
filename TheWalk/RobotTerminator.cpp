@@ -1,5 +1,25 @@
 #include "RobotTerminator.h"
 
+/*
+	Robotul Terminator se misca pe verticala.
+	Are vizibilitate 2 (dar nu conteaza decat daca vede finish)
+
+	Daca finish-ul se afla in aria sa de viziblitate:
+
+	- daca finish-ul este in partea de sus, are doua variante:
+	1. sus pana ajunge pe aceeasi linie si apoi dreapta pana ajunge pe aceeasi coloana
+	2. dreapta pana ajunge pe aceeasi coloana si apoi sus pana ajunge pe aceeasi linie
+	Pentru fiecare varianta, numara capcanele si numarul de item-uri
+	Alege drumul cu cele mai putine capcane;
+	in caz de egalitate, alege drumul cu cele mai multe item-uri
+
+	Analog pentru cazul in care finish-ul este in partea de jos:
+	1. jos, apoi dreapta
+	2. dreapta, apoi jos
+
+*/
+
+
 pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 	pair <int, int> p = make_pair(-1, -1);
 
@@ -105,8 +125,7 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 			if (i + 1 < h.getRows())
 				p = make_pair(i + 1, j);
 			else {
-				if (i + 1 == h.getRows())
-					if (j + 1 < h.getColumns())
+				if (i + 1 == h.getRows() && j + 1 < h.getColumns())
 						p = make_pair(i, j + 1);
 			}
 		}
@@ -141,11 +160,11 @@ void RobotTerminator::moveRobot(Harta& h, const int linie, const int coloana) {
 				cout << "\nTerminator mai poate folosi armura pentru inca "<< this->armor<<" capcane.";
 		}
 		else {
-			this->setNrVieti();
+			this->decreaseLife();
 			if (this->getNrVieti() == 0)
-				cout << "\nTerminator si-a sacrificat ultima viata pentru a isi indeplini misiunea.";
+				cout << "\nTerminator si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
 			else {
-				cout << "\nTerminator si-a sacrificat o viata pentru a isi indeplini misiunea.";
+				cout << "\nTerminator si-a sacrificat o viata pentru a-si indeplini misiunea.";
 				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";
 			}
 		}
@@ -196,7 +215,7 @@ void RobotTerminator::itemEffect(char i) {
 	//Daca a adunat suficiente arme(adica 3), poate distruge o capcana cu ele
 	//Este echivalentul unei vieti
 	if (this->weapon == 3) {
-		this->addViata();
+		this->addLife();
 		this->weapon = 0;
 		cout << "\nUhuuu! Terminator a strans 3 arme si in schimbul lor a primit o viata!";
 		cout << "\nRobotul are acum " << this->getNrVieti() << " vieti.";
@@ -204,9 +223,9 @@ void RobotTerminator::itemEffect(char i) {
 }
 
 void RobotTerminator::description() {
-	cout << "\nRobotul Terminator nu se teme de nimic, deci se misca vertical pe harta";
+	cout << "\nRobotul Terminator nu se teme de nimic si se misca vertical pe harta.";
 	cout << "\Daca intalneste pe harta un item corespunzator lui, Terminator castiga o armura.";
 	cout << "\nAceasta armura il protejeaza pentru urmatoarele 3 capcane.";
 	cout << "\nDaca intalneste un item care nu ii corespunde, atunci Terminator transforma acest item intr-o arma";
-	cout << "\nAtunci cand va strange 3 arme, va putea sa le dea la schimb pentru o viata.";
+	cout << "\nAtunci cand strange 3 arme, le poate da la schimb pentru o viata.";
 }

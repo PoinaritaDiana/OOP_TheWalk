@@ -1,2 +1,16 @@
 ﻿  Game.cpp
-  TheWalk.vcxproj -> C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.exe
+  Harta.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\Harta.cpp(15,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Robot.cpp
+  RobotQrio.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotQrio.cpp(100,20): error C2039: 'setNrVieti': is not a member of 'RobotQrio'
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotQrio.h(4): message : see declaration of 'RobotQrio'
+  RobotTerminator.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotTerminator.cpp(144,20): error C2039: 'setNrVieti': is not a member of 'RobotTerminator'
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotTerminator.h(4): message : see declaration of 'RobotTerminator'
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotTerminator.cpp(199,17): error C2039: 'addViata': is not a member of 'RobotTerminator'
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotTerminator.h(4): message : see declaration of 'RobotTerminator'
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\RobotTerminator.cpp(208,10): warning C4129: 'D': unrecognized character escape sequence
+  RobotWalle.cpp
+  TheWalk.cpp
+  Generating Code...
