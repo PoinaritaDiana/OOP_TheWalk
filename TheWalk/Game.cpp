@@ -107,7 +107,6 @@ void Game::runGame() {
 
 		//Daca robotul si-a pierdut toate vietile inainte sa ajunga la destinatie
 		if (r->getNrVieti()==0) {
-			cout << "\nYour robot is dead :(";
 			cout << "\nGame Over\nYou didn't reach your destination. Good luck next time!" << endl;
 			this->finish = 1;
 		}

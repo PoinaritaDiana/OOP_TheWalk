@@ -155,7 +155,7 @@ void RobotWalle::moveRobot(Harta& h, const int linie, const int coloana) {
 		else {
 			this->decreaseLife();
 			if (this->getNrVieti() == 0)
-				cout << "\nWall-E si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
+				cout << "\nWall-E is dead!!\nWall-E si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
 			else {
 				cout << "\nWall-E si-a sacrificat o viata pentru a-si indeplini misiunea.";
 				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";

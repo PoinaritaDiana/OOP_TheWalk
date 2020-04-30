@@ -162,7 +162,7 @@ void RobotTerminator::moveRobot(Harta& h, const int linie, const int coloana) {
 		else {
 			this->decreaseLife();
 			if (this->getNrVieti() == 0)
-				cout << "\nTerminator si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
+				cout << "\nTerminator is dead!!\nTerminator si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
 			else {
 				cout << "\nTerminator si-a sacrificat o viata pentru a-si indeplini misiunea.";
 				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";
@@ -224,8 +224,8 @@ void RobotTerminator::itemEffect(char i) {
 
 void RobotTerminator::description() {
 	cout << "\nRobotul Terminator nu se teme de nimic si se misca vertical pe harta.";
-	cout << "\Daca intalneste pe harta un item corespunzator lui, Terminator castiga o armura.";
+	cout << "\nDaca intalneste un item corespunzator lui, Terminator castiga o armura.";
 	cout << "\nAceasta armura il protejeaza pentru urmatoarele 3 capcane.";
-	cout << "\nDaca intalneste un item care nu ii corespunde, atunci Terminator transforma acest item intr-o arma";
+	cout << "\nDaca intalneste un item care nu ii corespunde, atunci Terminator transforma acest item intr-o arma.";
 	cout << "\nAtunci cand strange 3 arme, le poate da la schimb pentru o viata.";
 }
