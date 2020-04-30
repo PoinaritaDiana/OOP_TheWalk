@@ -118,7 +118,7 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 					dMin = d;
 				}
 				else
-					//Daca sunt egale, compar distanta de la prima pozitie pana la finish
+					//Daca sunt egale, compar distanta prima pozitie-finish
 					if (sum == sumMax) {
 						double d = sqrt((loc.first - l) * (loc.first - l) + (loc.second - c) * (loc.second - c));
 						if (d < dMin) {
@@ -129,7 +129,6 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 					}
 			}
 		}
-
 		p = pMax;
 	}
 	return p;
@@ -221,14 +220,11 @@ void RobotWalle::itemEffect(char i) {
 
 
 void RobotWalle::description() {
-	cout << "\nRobotul Walle are vizibilitate 2 si nu poate trece printr - un loc prin care a mai trecut.";
-	cout << "\nDaca finish - ul nu e in aria sa de vizibilitate : merge doar sus, jos, stanga sau dreapta si alege directia de suma maxima,";
-	cout << "iar in caz de egalitate, pe cea mai apropiata de finish";
-	cout << "\nitem = 3";
-	cout << "\npozitie libera = 2";
-	cout << "\ncapcana = 1";
-	cout << "\nmargine / pozitie vizitata = 0";
-	cout << "\nDaca vede finish - ul, se poate misca in orice directie si se va indrepta catre el cu orice pret";
+	cout << "\nRobotul Wall.E are vizibilitate 2";
+	cout << "\nNu poate trece printr - un loc prin care a mai trecut.";
+	cout << "\nStategia lui este sa stranga cat mai multe item-uri";
+	cout << "\nDaca vede finish - ul, se va indrepta catre el cu orice pret";
 	cout << "\nDaca intalneste un item corespunzator tipului sau, primeste un bloc gigantic cu care poate distruge capcane";
-	cout << "\nDaca intalneste alt item, primeste un cub mic. Atunci cand are 3 cuburi, poate construi din ele un bloc gigantic.";
+	cout << "\nDaca intalneste alt item, primeste un cub mic.";
+	cout << "\nAtunci cand are 3 cuburi, poate construi din ele un bloc gigantic.";
 }
