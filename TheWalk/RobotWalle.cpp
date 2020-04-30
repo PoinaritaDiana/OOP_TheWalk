@@ -218,3 +218,17 @@ void RobotWalle::itemEffect(char i) {
 		cout << "\nWall-E are acum " << this->throwAndDestroy << " blocuri gigantice.";
 	}
 }
+
+
+void RobotWalle::description() {
+	cout << "\nRobotul Walle are vizibilitate 2 si nu poate trece printr - un loc prin care a mai trecut.";
+	cout << "\nDaca finish - ul nu e in aria sa de vizibilitate : merge doar sus, jos, stanga sau dreapta si alege directia de suma maxima,";
+	cout << "iar in caz de egalitate, pe cea mai apropiata de finish";
+	cout << "\nitem = 3";
+	cout << "\npozitie libera = 2";
+	cout << "\ncapcana = 1";
+	cout << "\nmargine / pozitie vizitata = 0";
+	cout << "\nDaca vede finish - ul, se poate misca in orice directie si se va indrepta catre el cu orice pret";
+	cout << "\nDaca intalneste un item corespunzator tipului sau, primeste un bloc gigantic cu care poate distruge capcane";
+	cout << "\nDaca intalneste alt item, primeste un cub mic. Atunci cand are 3 cuburi, poate construi din ele un bloc gigantic.";
+}
