@@ -13,6 +13,7 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 	matrix[0][0] = 'R';      
 
 	srand(time(NULL));
+
 	//Generare pozitie destinatie (marcat cu F pe harta)
 	int ok = 0;
 	do {
@@ -25,30 +26,33 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 		}
 	} while (ok == 0);
 
+
 	//Generare pozitii pentru capcane (X pe harta) si items (I pe harta)
-	int nrCapcane, nrItems;
+	//nrItems = min(nrRows,nrColumns)
+	//nrTraps = random(2*max(nrRows,nrColumns), 3*max(nrRows,nrColumns))
+	int nrItems, nrTraps;
 	if (nrRows < nrColumns) {
 		nrItems = nrRows;
-		nrCapcane = 3 * nrColumns;
+		nrTraps = rand() % nrColumns + (2 * nrColumns + 1);
 	}
 	else {
 		nrItems = nrColumns;
-		nrCapcane = 3 * nrRows;
+		nrTraps = rand() % nrRows + (2 * nrRows + 1);
 	}
 
-	while (nrCapcane) {
-		int poz_x = rand() % (nrRows - 1) + 1;
-		int poz_y = rand() % (nrColumns - 1) + 1;
+	while (nrTraps) {
+		int poz_x = rand() % nrRows;
+		int poz_y = rand() % nrColumns;
 		if (matrix[poz_x][poz_y] == '_') {
-			nrCapcane--;
+			nrTraps--;
 			matrix[poz_x][poz_y] = 'X';
 		}
 	}
 	while (nrItems) {
 		//Items de 3 tipuri (fiecare este compatibil cu un tip de robot) - T, Q, W
 		int type = rand() % 3 + 1;					
-		int poz_x = rand() % (nrRows - 1) + 1;
-		int poz_y = rand() % (nrColumns - 1) + 1;
+		int poz_x = rand() % nrRows;
+		int poz_y = rand() % nrColumns;
 		if (matrix[poz_x][poz_y] == '_') {
 			nrItems--;
 			switch (type) {
@@ -59,6 +63,7 @@ Harta::Harta(const int rows, const int columns):nrRows(rows), nrColumns(columns)
 		}
 	}
 }
+
 
 //Destructor
 Harta::~Harta() {
@@ -88,6 +93,7 @@ char Harta::getMatrix(int i, int j) const{
 void Harta::setMatrix(const int i, const int j, const char c) {
 	this->matrix[i][j] = c;
 }
+
 
 //Afisare harta
 ostream& operator << (ostream& out, const Harta& h) {
