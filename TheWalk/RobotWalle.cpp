@@ -180,7 +180,7 @@ void RobotWalle::moveRobot(Harta& h, const int linie, const int coloana) {
 
 void RobotWalle::itemEffect(char i) {
 	/*
-		Robotul Wall-E aduna gunoi în cuburi mici, pe care le poate folosi
+		Robotul aduna gunoi în cuburi mici, pe care le poate folosi
 		pentru a construi blocuri gigantice cu care sa distruga capcanele
 		Daca intalneste un item corespunzator tipului sau,
 		primeste un bloc gigantic: throwAndDestroy++
@@ -190,22 +190,19 @@ void RobotWalle::itemEffect(char i) {
 	*/
 
 	if (i == 'T') {
-		cout << "\nAi gasit un item pentru Terminator";
+		cout << "\nAi gasit un item pentru Terminator.";
 		cout << "\nWall-E a transformat acest item intr-un cub.";
 		this->otherItems++;
 	}
 	if (i == 'Q') {
-		cout << "\nAi gasit un item pentru Qrio";
+		cout << "\nAi gasit un item pentru Qrio.";
 		cout << "\nWall-E a transformat acest item intr-un cub.";
 		this->otherItems++;
 	}
 	if (i == 'W') {
 		cout << "\nYou're lucky! Ai gasit un item pentru Wall-E!";
 		this->throwAndDestroy++;
-		if (this->throwAndDestroy == 1)
-			cout << "\nWall-E a primit primul sau bloc gigantic cu care poate distruge capcane!";
-		else
-			cout << "\nWall-E are acum " << this->throwAndDestroy << " blocuri gigantice.";
+		cout << "\nWall-E are " << this->throwAndDestroy << " blocuri gigantice cu care poate distruge capcane!";
 	}
 
 	//Daca a adunat suficiente cuburi(adica 3), 
@@ -215,6 +212,9 @@ void RobotWalle::itemEffect(char i) {
 		this->otherItems = 0;
 		cout << "\nUhuuu! Wall-E a strans 3 cuburi si a reusit sa le transforme intr-un bloc gigantic!";
 		cout << "\nWall-E are acum " << this->throwAndDestroy << " blocuri gigantice.";
+	}
+	else {
+		cout << "\nWall-E are " << this->otherItems << " cuburi";
 	}
 }
 
