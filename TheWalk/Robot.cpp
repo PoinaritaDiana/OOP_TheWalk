@@ -1,6 +1,8 @@
 #include "Robot.h"
 
-Robot::Robot(int id): type(id), nrVieti(3), position({0,0}) {}
+int Robot::nrVieti = 3;
+
+Robot::Robot(int id): type(id), position({0,0}) {}
 
 void Robot::setPosition(const pair<int,int> p) {
 	this->position = p;

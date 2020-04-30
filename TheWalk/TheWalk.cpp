@@ -12,7 +12,7 @@ int welcome_user() {
 	cout << "\t Welcome, user! \n";
 	cout << "\t Avem o harta pe care se afla un robot, jucatorul tau, in coltul din stanga sus.\n";
 	cout << "\t Pe harta exista o locatie unde robotul tau trebuie sa ajunga.\n";
-	cout << "\t De asemenea, pe harta sunt distribuite diferite capcane care il pot incurca pe robotul tau sau item-uri care sa il ajute in calatoria lui.\n\n";
+	cout << "\t De asemenea, pe harta sunt distribuite diferite capcane care il pot incurca pe robotul sau item-uri care sa il ajute in calatoria lui.\n\n";
 	cout << "\t You can choose your fighter:\n";
 	cout << "\t Optiunea 1: TERMINATOR - strong and ambitious\n";
 	cout << "\t Optiunea 2: QRIO - cute and smart\n";

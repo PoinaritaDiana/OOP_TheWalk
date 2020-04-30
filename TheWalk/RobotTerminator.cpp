@@ -202,3 +202,11 @@ void RobotTerminator::itemEffect(char i) {
 		cout << "\nRobotul are acum " << this->getNrVieti() << " vieti.";
 	}
 }
+
+void RobotTerminator::description() {
+	cout << "\nRobotul Terminator nu se teme de nimic, deci se misca vertical pe harta";
+	cout << "\Daca intalneste pe harta un item corespunzator lui, Terminator castiga o armura.";
+	cout << "\nAceasta armura il protejeaza pentru urmatoarele 3 capcane.";
+	cout << "\nDaca intalneste un item care nu ii corespunde, atunci Terminator transforma acest item intr-o arma";
+	cout << "\nAtunci cand va strange 3 arme, va putea sa le dea la schimb pentru o viata.";
+}

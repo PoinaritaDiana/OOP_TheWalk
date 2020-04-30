@@ -7,7 +7,7 @@ class Harta;
 
 class Robot
 {
-	int nrVieti;
+	static int nrVieti;
 	int type;
 	pair <int, int> position;
 
@@ -25,5 +25,6 @@ public:
 	virtual pair<int, int> chooseNewPosition(const Harta& h) const = 0;			//Noua pozitie de pe harta a robotului
 	virtual void moveRobot(Harta&, const int, const int) = 0;					//Muta robotul pe noua pozitie aleasa
 	virtual void itemEffect(char) = 0;											//Modeleaza cum se comporta robotul fata de un item
+	virtual void description() = 0;
 };
 
