@@ -20,6 +20,5 @@ public:
 
 	void print();				//Afisez harta pentru runda curenta
 	void runGame();				//Simulare runda
-	void setRobot(int);			//Setez tipul de robot 
 	int getFinish();			//Returnez finish
 };

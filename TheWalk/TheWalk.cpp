@@ -7,46 +7,27 @@
 #include "RobotWalle.h"
 using namespace std;
 
-int welcome_user() {
+void welcome_user() {
 	cout << "\n\n\t\t\t THE WALK GAME \n\n";
 	cout << "\t Welcome, user! \n";
 	cout << "\t Avem o harta pe care se afla un robot, jucatorul tau, in coltul din stanga sus.\n";
 	cout << "\t Pe harta exista o locatie unde robotul tau trebuie sa ajunga.\n";
 	cout << "\t De asemenea, pe harta sunt distribuite diferite capcane care il pot incurca pe robotul sau item-uri care sa il ajute in calatoria lui.\n\n";
-	cout << "\t You can choose your fighter:\n";
-	cout << "\t Optiunea 1: TERMINATOR - strong and ambitious\n";
-	cout << "\t Optiunea 2: QRIO - cute and smart\n";
-	cout << "\t Optiunea 3: WALL.E - hardworking and adventurous\n\n";
-	cout << "\tIntroduceti optiunea: ";
-	int op;
-	cin >> op;
-	while (op < 1 || op>3) {
-		cout << "\n Optiunea nu este valida. Introduceti una din cele de mai sus:";
-		cin >> op;
-	}
-	cout << "\n\n\t Good luck, ";
-	switch (op) {
-		case 1: cout << "Terminator!\n\n"; break;
-		case 2: cout << "Qrio!\n\n"; break;
-		case 3: cout << "Wall.E!\n\n"; break;
-	}
+
 	system("pause");
 	system("cls");
-	return op;
 }
 
-
 int main() {
-	int tip_robot=welcome_user();   
+	welcome_user();   
 	Game G;
-	G.setRobot(tip_robot);
-
-	cout << "The Force will be with you. Always." << endl;
+	cout << "\n\nThe Force will be with you. Always.\n\n";
 	G.print();
 	cout << endl;
+
 	cout << "Cum doriti sa se desfasoare jocul?" << endl;
-	cout << "Optiunea 1 : Oprirea simularii la stadiul curent, cu afisarea configuratiei hartii la sfarsitul unei runde simulate" << endl;
-	cout << "Optiunea 2 : Simulare succesiva a rundelor " << endl;
+	cout << "\nOptiunea 1 : Oprirea simularii la stadiul curent,\ncu afisarea configuratiei hartii la sfarsitul unei runde simulate" << endl;
+	cout << "\nOptiunea 2 : Simulare succesiva a rundelor " << endl;
 	cout << "\n  Optiunea dumneavoastra: ";
 	int op;
 	cin >> op;
