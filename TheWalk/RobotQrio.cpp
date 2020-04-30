@@ -150,12 +150,12 @@ void RobotQrio::itemEffect(char i) {
 
 
 void RobotQrio::description() {
-	cout << "\nRobotul Qrio are vizibilitate 1";
-	cout << "\nSe poate deplasa in orice directie";
+	cout << "\nRobotul Qrio are vizibilitate 1.";
+	cout << "\nSe poate deplasa in orice directie.";
 	cout << "\nNu poate trece printr - un loc prin care a mai trecut.";
 	cout << "\nStrategia lui este sa evite capcanele.";
 	cout << "\nAlege pozitia libera de pe harta care este cat mai aproape de destinatie.";
-	cout << "\nDaca este inconjurat de bombe, va dezamorsa bomba (daca stie cum sa faca acest lucru) sau isi va sacrifica o viata";
+	cout << "\nDaca este inconjurat de bombe, va dezamorsa bomba (daca stie cum sa faca acest lucru) sau isi va sacrifica o viata.";
 	cout << "\nDaca intalneste un item corespunzator tipului sau, robotul va invata cum sa dezamorseze o bomba.";
-	cout << "\nDaca intalneste un item care nu ii corespunde, robotul Qrio nu are voie sa il ia.";
+	cout << "\nDaca intalneste alt item, robotul Qrio nu are voie sa il ia.";
 }

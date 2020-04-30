@@ -220,11 +220,11 @@ void RobotWalle::itemEffect(char i) {
 
 
 void RobotWalle::description() {
-	cout << "\nRobotul Wall.E are vizibilitate 2";
+	cout << "\nRobotul Wall.E are vizibilitate 2.";
 	cout << "\nNu poate trece printr - un loc prin care a mai trecut.";
-	cout << "\nStategia lui este sa stranga cat mai multe item-uri";
-	cout << "\nDaca vede finish - ul, se va indrepta catre el cu orice pret";
-	cout << "\nDaca intalneste un item corespunzator tipului sau, primeste un bloc gigantic cu care poate distruge capcane";
+	cout << "\nStategia lui este sa stranga cat mai multe item-uri.";
+	cout << "\nDaca vede finish - ul, se va indrepta catre el cu orice pret.";
+	cout << "\nDaca intalneste un item corespunzator tipului sau, primeste un bloc gigantic cu care poate distruge o capcana.";
 	cout << "\nDaca intalneste alt item, primeste un cub mic.";
 	cout << "\nAtunci cand are 3 cuburi, poate construi din ele un bloc gigantic.";
 }
