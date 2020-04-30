@@ -148,16 +148,16 @@ void RobotWalle::moveRobot(Harta& h, const int linie, const int coloana) {
 			cout << "\nWOW! Wall-E tocmai a distrus o capcana si este cu un pas mai aproape de destinatia lui!";
 			this->throwAndDestroy--;
 			if (this->throwAndDestroy == 0)
-				cout << "\nDin pacate, Wall-E nu are niciun bloc.";
+				cout << "\nDin pacate, Wall-E nu mai are niciun bloc.";
 			else
 				cout << "\nWall-E mai are " << this->throwAndDestroy << " blocuri gigantice.";
 		}
 		else {
-			this->setNrVieti();
+			this->decreaseLife();
 			if (this->getNrVieti() == 0)
-				cout << "\nWall-E si-a sacrificat ultima viata pentru a isi indeplini misiunea.";
+				cout << "\nWall-E si-a sacrificat ultima viata pentru a-si indeplini misiunea.";
 			else {
-				cout << "\nWall-E si-a sacrificat o viata pentru a isi indeplini misiunea.";
+				cout << "\nWall-E si-a sacrificat o viata pentru a-si indeplini misiunea.";
 				cout << "\nRobotul mai are " << this->getNrVieti() << " vieti ramase.";
 			}
 		}
