@@ -7,7 +7,7 @@ class Harta;
 
 class Robot
 {
-	static int nrVieti;				//Numar vieti
+	int nrVieti;				//Numar vieti
 	int type;						//Tipul robotului
 	pair <int, int> position;		//Pozitia curenta a robotului
 

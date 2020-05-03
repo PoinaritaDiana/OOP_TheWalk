@@ -115,7 +115,7 @@ void Game::runGame() {
 
 
 //Returneaza pozitia de finish
-int Game::getFinish() {
+int Game::getFinish () const {
 	return this->finish;
 }
 

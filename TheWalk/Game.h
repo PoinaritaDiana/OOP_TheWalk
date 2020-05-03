@@ -20,5 +20,5 @@ public:
 
 	void print();				//Afisez harta pentru runda curenta
 	void runGame();				//Simulare runda
-	int getFinish();			//Returnez finish
+	int getFinish () const;			//Returnez finish
 };
