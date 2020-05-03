@@ -13,9 +13,6 @@ void welcome_user() {
 	cout << "\t Avem o harta pe care se afla un robot, jucatorul tau, in coltul din stanga sus.\n";
 	cout << "\t Pe harta exista o locatie unde robotul tau trebuie sa ajunga.\n";
 	cout << "\t De asemenea, pe harta sunt distribuite diferite capcane care il pot incurca pe robotul sau item-uri care sa il ajute in calatoria lui.\n\n";
-
-	system("pause");
-	system("cls");
 }
 
 int main() {
@@ -36,7 +33,6 @@ int main() {
 		cin >> op;
 	}
 	cout << endl;
-	system("pause");
 	cout << endl;
 
 	if (op == 1) {

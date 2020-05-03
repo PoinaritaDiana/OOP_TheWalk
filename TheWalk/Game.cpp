@@ -63,11 +63,10 @@ Game::Game():runda(0), finish(0){
 		cout << "Wall.E!\n\n";
 		r = new RobotWalle(3);
 	}
-	system("pause");
-
+	
 	r->description();
 	cout << "\n\n";
-	system("pause");
+
 }
 
 

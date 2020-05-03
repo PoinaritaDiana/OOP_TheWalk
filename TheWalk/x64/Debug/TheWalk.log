@@ -1,4 +1,7 @@
 ﻿  Game.cpp
+  Harta.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\Harta.cpp(15,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Robot.cpp
   RobotQrio.cpp
   RobotTerminator.cpp
   RobotWalle.cpp
