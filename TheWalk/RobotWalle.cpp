@@ -31,7 +31,7 @@
 			 -
 */
 
-RobotWalle::RobotWalle(const int id) : Robot(id), throwAndDestroy(0), otherItems(0) {};
+RobotWalle::RobotWalle(const int id) : Robot(id), throwAndDestroy(0), otherItems(0) {}
 
 pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 	pair <int, int> p = make_pair(-1, -1);

@@ -19,7 +19,7 @@
 
 */
 
-RobotTerminator::RobotTerminator(const int id) : Robot(id), armor(0), weapon(0) {};
+RobotTerminator::RobotTerminator(const int id) : Robot(id), armor(0), weapon(0) {}
 
 
 pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
