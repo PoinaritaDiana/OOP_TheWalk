@@ -6,7 +6,7 @@ class RobotWalle: public Robot{
 	int otherItems;
 
 public:
-	RobotWalle(const int id) : Robot(id), throwAndDestroy(0), otherItems(0) {};
+	RobotWalle(const int id);
 
 	pair<int, int> chooseNewPosition(const Harta& h) const;
 	void moveRobot(Harta&, const int, const int);

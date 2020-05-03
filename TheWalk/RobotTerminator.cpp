@@ -19,6 +19,8 @@
 
 */
 
+RobotTerminator::RobotTerminator(const int id) : Robot(id), armor(0), weapon(0) {};
+
 
 pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 	pair <int, int> p = make_pair(-1, -1);

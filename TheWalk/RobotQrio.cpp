@@ -14,6 +14,7 @@
 	(alegand pozitia care este cat mai aproape de destinatie)
 */
 
+RobotQrio::RobotQrio(const int id) : Robot(id), detonateBomb(0) {};
 
 pair<int, int> RobotQrio::chooseNewPosition(const Harta& h) const {
 	/*
