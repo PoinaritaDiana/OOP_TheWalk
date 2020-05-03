@@ -88,10 +88,10 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		//Se deplaseaza sus, dreapta, jos, stanga
 		//Coordonatele vecinilor 
 		vector <pair<int, int>> prim;
-		prim.push_back(make_pair(i - 1, j));
-		prim.push_back(make_pair(i, j + 1));
-		prim.push_back(make_pair(i + 1, j));
-		prim.push_back(make_pair(i, j - 1));
+		prim.push_back(make_pair(i - 1, j));	//Sus
+		prim.push_back(make_pair(i, j + 1));	//Dreapta
+		prim.push_back(make_pair(i + 1, j));	//Jos
+		prim.push_back(make_pair(i, j - 1));	//Stanga
 
 		//Coordonatele pozitiilor la distanta 2
 		vector <pair<int, int>> second;
