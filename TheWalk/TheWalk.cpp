@@ -45,6 +45,10 @@ int main() {
 			if (f == 0) {
 				cout << "\nDoriti sa continuati jocul?\nIntroduceti 1 pentru DA sau 0 pentru NU:";
 				cin >> cont;
+				while (cont != 1 && cont != 0) {
+					cout << "\n Optiunea nu este valida. Introduceti una din cele de mai sus:";
+					cin >> cont;
+				}
 				cout << endl;
 			}
 		} while (cont==1 && f==0);

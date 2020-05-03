@@ -46,13 +46,17 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 	if (abs(loc.first - i) <= 2 && abs(loc.second - j) <= 2) {
 		int l=i, c=j;
 		if (loc.first == i) {
-			if (loc.second < j) c--;
-			if (loc.second > j) c++;
+			if (loc.second < j) 
+				c--;
+			if (loc.second > j) 
+				c++;
 		}
 		else {
 			if (loc.second == j) {
-				if (loc.first < i) l--;
-				if (loc.first > i) l++;
+				if (loc.first < i) 
+					l--;
+				if (loc.first > i) 
+					l++;
 			}
 			else {
 				if (loc.first < i && loc.second < j) {
@@ -93,20 +97,26 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 
 			if (l >= 0 && l < h.getRows() && c >= 0 && c < h.getColumns() && h.getMatrix(l, c) != '/') {
 				//Prima casuta = vecin
-				if (h.getMatrix(l, c) == 'X') sum = 1;
+				if (h.getMatrix(l, c) == 'X') 
+					sum = 1;
 				else {
-					if (h.getMatrix(l,c) == '_') sum = 2;
-					else sum = 3;
+					if (h.getMatrix(l,c) == '_') 
+						sum = 2;
+					else 
+						sum = 3;
 				}
 
 				int ls = second[d].first;
 				int cs = second[d].second;
 				//A doua casuta (distanta 2)
 				if (ls >= 0 && ls < h.getRows() && cs >= 0 && cs < h.getColumns() && h.getMatrix(ls, cs) != '/') {
-					if (h.getMatrix(ls,cs) == 'X') sum += 1;
+					if (h.getMatrix(ls,cs) == 'X') 
+						sum += 1;
 					else {
-						if (h.getMatrix(ls,cs) == '_') sum += 2;
-						else sum += 3;
+						if (h.getMatrix(ls,cs) == '_') 
+							sum += 2;
+						else 
+							sum += 3;
 					}
 				}
 

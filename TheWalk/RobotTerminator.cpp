@@ -41,8 +41,10 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 		}
 		else {
 			if (loc.second == j) {
-				if (loc.first < i) l--;
-				if (loc.first > i) l++;
+				if (loc.first < i) 
+					l--;
+				if (loc.first > i) 
+					l++;
 				p = make_pair(l, c);
 			}
 			else {
@@ -53,33 +55,45 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 					//Sus si apoi dreapta
 					while (copyi1 > loc.first) {
 						copyi1--;
-						if (h.getMatrix(copyi1, j) == 'X') c1++;
-						if (h.getMatrix(copyi1, j) == 'T' || h.getMatrix(copyi1, j) == 'W' || h.getMatrix(copyi1, j) == 'Q') nrItems1++;
+						if (h.getMatrix(copyi1, j) == 'X') 
+							c1++;
+						if (h.getMatrix(copyi1, j) == 'T' || h.getMatrix(copyi1, j) == 'W' || h.getMatrix(copyi1, j) == 'Q') 
+							nrItems1++;
 					}
 					while (copyj1 < loc.second) {
 						copyj1++;
-						if (h.getMatrix(copyi1, copyj1) == 'X') c1++;
-						if (h.getMatrix(copyi1, copyj1) == 'T' || h.getMatrix(copyi1, copyj1) == 'W' || h.getMatrix(copyi1, copyj1) == 'Q') nrItems1++;
+						if (h.getMatrix(copyi1, copyj1) == 'X') 
+							c1++;
+						if (h.getMatrix(copyi1, copyj1) == 'T' || h.getMatrix(copyi1, copyj1) == 'W' || h.getMatrix(copyi1, copyj1) == 'Q') 
+							nrItems1++;
 					}
 
 					//Dreapta si apoi sus
 					while (copyj2 < loc.second) {
 						copyj2++;
-						if (h.getMatrix(i, copyj2) == 'X') c2++;
-						if (h.getMatrix(i, copyj2) == 'T' || h.getMatrix(i, copyj2) == 'W' || h.getMatrix(i, copyj2) == 'Q') nrItems2++;
+						if (h.getMatrix(i, copyj2) == 'X') 
+							c2++;
+						if (h.getMatrix(i, copyj2) == 'T' || h.getMatrix(i, copyj2) == 'W' || h.getMatrix(i, copyj2) == 'Q') 
+							nrItems2++;
 					}
 					while (copyi2 > loc.first) {
 						copyi2--;
-						if (h.getMatrix(copyi2, copyj2) == 'X') c2++;
-						if (h.getMatrix(copyi2, copyj2) == 'T' || h.getMatrix(copyi2, copyj2) == 'W' || h.getMatrix(copyi2, copyj2) == 'Q') nrItems2++;
+						if (h.getMatrix(copyi2, copyj2) == 'X') 
+							c2++;
+						if (h.getMatrix(copyi2, copyj2) == 'T' || h.getMatrix(copyi2, copyj2) == 'W' || h.getMatrix(copyi2, copyj2) == 'Q') 
+							nrItems2++;
 					}
 
-					if (c1 < c2) p = make_pair(i-1,j);
+					if (c1 < c2) 
+						p = make_pair(i-1,j);
 					else {
-						if(c1>c2) p = make_pair(i,j+1);
+						if(c1>c2)
+							p = make_pair(i,j+1);
 						else {
-							if(nrItems1>nrItems2) p = make_pair(i - 1, j);
-							else p = make_pair(i , j+1);
+							if(nrItems1>nrItems2) 
+								p = make_pair(i - 1, j);
+							else 
+								p = make_pair(i , j+1);
 						}
 					}
 				}
@@ -87,33 +101,45 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 					//Jos si apoi dreapta
 					while (copyi1 < loc.first) {
 						copyi1++;
-						if (h.getMatrix(copyi1, j) == 'X') c1++;
-						if (h.getMatrix(copyi1, j) == 'T' || h.getMatrix(copyi1, j) == 'W' || h.getMatrix(copyi1, j) == 'Q') nrItems1++;
+						if (h.getMatrix(copyi1, j) == 'X') 
+							c1++;
+						if (h.getMatrix(copyi1, j) == 'T' || h.getMatrix(copyi1, j) == 'W' || h.getMatrix(copyi1, j) == 'Q') 
+							nrItems1++;
 					}
 					while (copyj1 < loc.second) {
 						copyj1++;
-						if (h.getMatrix(copyi1, copyj1) == 'X') c1++;
-						if (h.getMatrix(copyi1, copyj1) == 'T' || h.getMatrix(copyi1, copyj1) == 'W' || h.getMatrix(copyi1, copyj1) == 'Q') nrItems1++;
+						if (h.getMatrix(copyi1, copyj1) == 'X') 
+							c1++;
+						if (h.getMatrix(copyi1, copyj1) == 'T' || h.getMatrix(copyi1, copyj1) == 'W' || h.getMatrix(copyi1, copyj1) == 'Q') 
+							nrItems1++;
 					}
 
 					//Dreapta si apoi jos
 					while (copyj2 < loc.second) {
 						copyj2++;
-						if (h.getMatrix(i, copyj2) == 'X') c2++;
-						if (h.getMatrix(i, copyj2) == 'T' || h.getMatrix(i, copyj2) == 'W' || h.getMatrix(i, copyj2) == 'Q') nrItems2++;
+						if (h.getMatrix(i, copyj2) == 'X') 
+							c2++;
+						if (h.getMatrix(i, copyj2) == 'T' || h.getMatrix(i, copyj2) == 'W' || h.getMatrix(i, copyj2) == 'Q') 
+							nrItems2++;
 					}
 					while (copyi2 < loc.first) {
 						copyi2++;
-						if (h.getMatrix(copyi2, copyj2) == 'X') c2++;
-						if (h.getMatrix(copyi2, copyj2) == 'T' || h.getMatrix(copyi2, copyj2) == 'W' || h.getMatrix(copyi2, copyj2) == 'Q') nrItems2++;
+						if (h.getMatrix(copyi2, copyj2) == 'X') 
+							c2++;
+						if (h.getMatrix(copyi2, copyj2) == 'T' || h.getMatrix(copyi2, copyj2) == 'W' || h.getMatrix(copyi2, copyj2) == 'Q') 
+							nrItems2++;
 					}
 
-					if (c1 < c2) p = make_pair(i + 1, j);
+					if (c1 < c2) 
+						p = make_pair(i + 1, j);
 					else {
-						if (c1 > c2) p = make_pair(i, j + 1);
+						if (c1 > c2) 
+							p = make_pair(i, j + 1);
 						else {
-							if (nrItems1 > nrItems2) p = make_pair(i + 1, j);
-							else p = make_pair(i, j + 1);
+							if (nrItems1 > nrItems2) 
+								p = make_pair(i + 1, j);
+							else 
+								p = make_pair(i, j + 1);
 						}
 					}
 				}
