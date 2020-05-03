@@ -121,6 +121,7 @@ pair<int, int> RobotTerminator::chooseNewPosition(const Harta& h) const {
 		}
 	}
 	else {
+		//Miscarea pe verticala
 		if (j % 2 == 0) {
 			if (i + 1 < h.getRows())
 				p = make_pair(i + 1, j);

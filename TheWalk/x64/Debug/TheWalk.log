@@ -1,3 +1,10 @@
-﻿  RobotWalle.cpp
-  LINK : C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.exe not found or not built by the last incremental link; performing full link
+﻿  Game.cpp
+  Harta.cpp
+C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\Harta.cpp(15,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Robot.cpp
+  RobotQrio.cpp
+  RobotTerminator.cpp
+  RobotWalle.cpp
+  TheWalk.cpp
+  Generating Code...
   TheWalk.vcxproj -> C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.exe
