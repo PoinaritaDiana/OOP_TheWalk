@@ -82,10 +82,10 @@ pair<int, int> RobotWalle::chooseNewPosition(const Harta& h) const {
 		pair <int, int> pMax = make_pair(-1, -1);
 
 		//Se deplaseaza sus, dreapta, jos, stanga
-		//Array pentru coordonatele vecinilor 
-		pair<int,int> prim[4] = { make_pair(i - 1,j), make_pair(i ,j+1), make_pair(i + 1,j), make_pair(i ,j-1) };
-		//Array pentru coordonatele pozitiilor la distanta 2
-		pair<int,int> second[4] = { make_pair(i - 2,j), make_pair(i ,j + 2), make_pair(i + 2,j), make_pair(i ,j - 1) };
+		//Coordonatele vecinilor 
+		vector <pair<int, int>> prim { make_pair(i - 1,j), make_pair(i ,j + 1), make_pair(i + 1,j), make_pair(i ,j - 1) };
+		//Coordonatele pozitiilor la distanta 2
+		vector <pair<int,int>> second { make_pair(i - 2,j), make_pair(i ,j + 2), make_pair(i + 2,j), make_pair(i ,j - 1) };
 
 		for (int d = 0; d < 4; d++) {
 			int l = prim[d].first;
