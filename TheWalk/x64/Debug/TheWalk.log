@@ -1,2 +1,7 @@
-﻿  RobotWalle.cpp
+﻿  Game.cpp
+  RobotQrio.cpp
+  RobotTerminator.cpp
+  RobotWalle.cpp
+  TheWalk.cpp
+  Generating Code...
   TheWalk.vcxproj -> C:\Users\Diana\Desktop\TheWalkPoo\OOP_TheWalk\TheWalk\x64\Debug\TheWalk.exe

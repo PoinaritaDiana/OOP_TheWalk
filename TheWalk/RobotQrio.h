@@ -10,5 +10,6 @@ public:
 	void moveRobot(Harta&, const int, const int);
 	void itemEffect(char);
 	void description();
+	~RobotQrio() {};
 };
 
